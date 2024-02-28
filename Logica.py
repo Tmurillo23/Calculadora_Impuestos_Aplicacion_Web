@@ -1,6 +1,9 @@
 #Aplicacion realizada por Luis Pablo Goez Y Valentina Carmona
 
-def calcularImpuesto(TILA: int, OIGA: int, OINGA: int, VRFA: int, PCHA: int, VDA: int, GEA: int):
+
+
+
+def calcularImpuesto(TILA: int, OIGA: int, OINGA: int, VRFA: int, PSSA: int, APA: int, PCHA: int, VDA: int, GEA: int):
     """
     Calcular el valor del impuesto a pagar
     TILA: Total ingresos laborales al año
@@ -12,21 +15,45 @@ def calcularImpuesto(TILA: int, OIGA: int, OINGA: int, VRFA: int, PCHA: int, VDA
     GEA: Gastos en educacion al año
     VSSA: Valor a la seguridad social al año
     APA: Aporte a la pension al año
-    """
+    
 
     #Calcular El VSSA y APA
-
     PSSA = ( TILA * 4 ) / 100
     APA = ( TILA * 4 ) / 100
-
-
-    #Calcular el Total de Ingresos Gravados
-    TIG =  ( TILA + OIGA) - OINGA
-
 
     #Calcular Total de Ingresos NO Gravables
     TING = OINGA
 
+    #Calcular el Total de Ingresos Gravados
+    TIG =  ( TILA + OIGA) - TING
 
     #Calcular Total Costos Deducibles
     TCD = PSSA + APA + PCHA + VDA + GEA
+
+    #Calcular UVT (Unidades de valor tributario)
+    UVT = TIG / 46076
+
+    #Calculamos tasa impositiva
+    if UVT <= 1090:
+        TI = 0
+    elif UVT > 1090 or UVT <= 1700:
+        TI = 0,19
+    elif UVT > 1700 or UVT <= 4100:
+        TI = 0,28
+    elif UVT > 4100 or UVT <= 8670:
+        TI = 0,33
+    elif UVT > 8670 or UVT <= 18970:
+        TI = 0,35
+    elif UVT > 18970 or UVT <= 31000:
+        TI = 0,37
+    elif UVT > 31000:
+        TI = 0,39
+
+    #Calcular el valor a pagar por impuestos de rentas
+    if TI == 0:
+        VPIR = 0
+    else:
+        VPIR = (( TIG - TCD ) * TI ) - VRFA
+    
+    """
+    pass
