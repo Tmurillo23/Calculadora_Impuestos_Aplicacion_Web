@@ -402,21 +402,8 @@ class ImpuestosTest(unittest.TestCase):
         VDA: int = 0
         GEA: int = 5000000
 
-        #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
-
-        #Datos de salida esperados
-        TIG = 25000000
-        TING = 1000000
-        TCD = 6200000
-        VPIR = 0
-
-
-        #Validacion de datos
-        self.assertEqual( TIG, resultado[0] )
-        self.assertEqual( TING, resultado[1] )
-        self.assertEqual( TCD, resultado[2] )
-        self.assertEqual( VPIR, resultado[3] )
+        #Validacion
+        self.assertRaises( Logica.RetencionMayorIngresosError, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error2(self):
@@ -434,21 +421,8 @@ class ImpuestosTest(unittest.TestCase):
         VDA: int = 0
         GEA: int = 0
 
-        #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
-
-        #Datos de salida esperados
-        TIG = 0
-        TING = 0
-        TCD = 0
-        VPIR = 0
-
-
-        #Validacion de datos
-        self.assertEqual( TIG, resultado[0] )
-        self.assertEqual( TING, resultado[1] )
-        self.assertEqual( TCD, resultado[2] )
-        self.assertEqual( VPIR, resultado[3] )
+        #Validacion
+        self.assertRaises( Logica.IngresoInvalidoExcepcion, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error3(self):
@@ -466,21 +440,8 @@ class ImpuestosTest(unittest.TestCase):
         VDA: int = 0
         GEA: int = 0
 
-        #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
-
-        #Datos de salida esperados
-        TIG = 9000000000
-        TING = 3000000
-        TCD = 640000000
-        VPIR = 1070000000
-
-
-        #Validacion de datos
-        self.assertEqual( TIG, resultado[0] )
-        self.assertEqual( TING, resultado[1] )
-        self.assertEqual( TCD, resultado[2] )
-        self.assertEqual( VPIR, resultado[3] )
+        #Validacion
+        self.assertRaises( Logica.DigitosMuyGrandesError, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error4(self):
@@ -498,21 +459,8 @@ class ImpuestosTest(unittest.TestCase):
         VDA: int = 0
         GEA: int = 0
 
-        #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
-
-        #Datos de salida esperados
-        TIG = 0
-        TING = 0
-        TCD = 0
-        VPIR = 0
-
-
-        #Validacion de datos
-        self.assertEqual( TIG, resultado[0] )
-        self.assertEqual( TING, resultado[1] )
-        self.assertEqual( TCD, resultado[2] )
-        self.assertEqual( VPIR, resultado[3] )
+        #Validacion
+        self.assertRaises( Logica.DatosNoAgregadosError, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error5(self):
@@ -530,21 +478,8 @@ class ImpuestosTest(unittest.TestCase):
         VDA: int = 0
         GEA: int = 0
 
-        #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
-
-        #Datos de salida esperados
-        TIG = 15000000
-        TING = 0
-        TCD = -13800000
-        VPIR = 0
-
-
-        #Validacion de datos
-        self.assertEqual( TIG, resultado[0] )
-        self.assertEqual( TING, resultado[1] )
-        self.assertEqual( TCD, resultado[2] )
-        self.assertEqual( VPIR, resultado[3] )
+        #Validacion
+        self.assertRaises( Logica.DeduciblesNegrativosError, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error6(self):
@@ -562,21 +497,8 @@ class ImpuestosTest(unittest.TestCase):
         VDA: int = 0
         GEA: int = 0
 
-        #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
-
-        #Datos de salida esperados
-        TIG = 0
-        TING = 0
-        TCD = 2000000
-        VPIR = 0
-
-
-        #Validacion de datos
-        self.assertEqual( TIG, resultado[0] )
-        self.assertEqual( TING, resultado[1] )
-        self.assertEqual( TCD, resultado[2] )
-        self.assertEqual( VPIR, resultado[3] )
+        #Validacion
+        self.assertRaises( Logica.ActivosNoIngresadosExcepcion, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error7(self):
@@ -594,21 +516,8 @@ class ImpuestosTest(unittest.TestCase):
         VDA: int = 0
         GEA: int = 0
 
-        #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
-
-        #Datos de salida esperados
-        TIG = -16600000
-        TING = -300000
-        TCD = -1248000
-        VPIR = 0
-
-
-        #Validacion de datos
-        self.assertEqual( TIG, resultado[0] )
-        self.assertEqual( TING, resultado[1] )
-        self.assertEqual( TCD, resultado[2] )
-        self.assertEqual( VPIR, resultado[3] )
+        #Validacion
+        self.assertRaises( Logica.ValorNegrativoIngresadoExcepcion, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error8(self):
@@ -626,21 +535,8 @@ class ImpuestosTest(unittest.TestCase):
         VDA: int = 0
         GEA: int = 0
 
-        #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
-
-        #Datos de salida esperados
-        TIG = 0
-        TING = 0
-        TCD = 0
-        VPIR = 0
-
-
-        #Validacion de datos
-        self.assertEqual( TIG, resultado[0] )
-        self.assertEqual( TING, resultado[1] )
-        self.assertEqual( TCD, resultado[2] )
-        self.assertEqual( VPIR, resultado[3] )
+        #Validacion
+        self.assertRaises( Logica.CifrasIncoherentesExpecion, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
 
 

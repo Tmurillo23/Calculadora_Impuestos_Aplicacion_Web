@@ -1,8 +1,5 @@
 #Aplicacion realizada por Luis Pablo Goez Y Valentina Carmona
 
-
-
-
 def calcularImpuesto(TILA: int, OIGA: int, OINGA: int, VRFA: int, PSSA: int, APA: int, PCHA: int, VDA: int, GEA: int):
     """
     Calcular el valor del impuesto a pagar
@@ -57,3 +54,27 @@ def calcularImpuesto(TILA: int, OIGA: int, OINGA: int, VRFA: int, PSSA: int, APA
     
     """
     pass
+
+class RetencionMayorIngresosError( Exception ):
+    """La retencion en la fuente no puede ser mayor al valor total de ingresos."""
+
+class IngresoInvalidoExcepcion( Exception ):
+    """Ingresaste un valor invalido."""
+
+class DigitosMuyGrandesError( Exception ):
+    """Numeros ingresados muy grandes, exceden el valor normal a calcular."""
+
+class DatosNoAgregadosError( Exception ):
+    """Error! Datos obligatorios no agregados. Ingreselos para poder continuar."""
+
+class DeduciblesNegrativosError( Exception ):
+    """Error! Algo anda mal, el total de tus deducibles es menor que cero(0)."""
+
+class ActivosNoIngresadosExcepcion( Exception ):
+    """Activos no agregados, ingrese activos para continuar."""
+
+class ValorNegrativoIngresadoExcepcion( Exception ):
+    """No puedes ingresar valor negativos en esta casilla."""
+
+class CifrasIncoherentesExpecion( Exception ):
+    """Ingresaste un valor incoherente, verifique y cambie"""
