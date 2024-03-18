@@ -2,8 +2,10 @@
 import unittest
 
 # Las pruebas importan los modulos que hacen el trabajo
-import Logica
+import sys
+sys.path.append("src")
 
+from Logic import TaxLogic
 class ImpuestosTest(unittest.TestCase):
 
 
@@ -23,7 +25,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 25200000
@@ -53,7 +55,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 100000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 37000000
@@ -83,7 +85,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 10000000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 90000000
@@ -113,7 +115,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 1000000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 131500000
@@ -143,7 +145,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 7000000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 120000000
@@ -173,7 +175,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 24000000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 600000000
@@ -208,7 +210,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 15600000
@@ -240,7 +242,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 20000000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 5015600000
@@ -272,7 +274,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 15000000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = -30000000
@@ -304,7 +306,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 45000000
@@ -336,7 +338,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 5000000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 33600000
@@ -368,7 +370,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 20000000
 
         #Proceso
-        resultado = Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
+        resultado = TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA)
 
         #Datos de salida esperados
         TIG = 22000000
@@ -403,7 +405,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 5000000
 
         #Validacion
-        self.assertRaises( Logica.RetencionMayorIngresosError, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
+        self.assertRaises( TaxLogic.HigherIncomeRetentionException, TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error2(self):
@@ -422,7 +424,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Validacion
-        self.assertRaises( Logica.IngresoInvalidoExcepcion, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
+        self.assertRaises( TaxLogic.InvalidEntryException, TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error3(self):
@@ -441,7 +443,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Validacion
-        self.assertRaises( Logica.DigitosMuyGrandesError, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
+        self.assertRaises( TaxLogic.DigitsVeryLargeError, TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error4(self):
@@ -460,7 +462,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Validacion
-        self.assertRaises( Logica.DatosNoAgregadosError, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
+        self.assertRaises( TaxLogic.DataNotAggregatedError, TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error5(self):
@@ -479,7 +481,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Validacion
-        self.assertRaises( Logica.DeduciblesNegrativosError, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
+        self.assertRaises( TaxLogic.DeductiblesNegativeError, TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error6(self):
@@ -498,7 +500,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Validacion
-        self.assertRaises( Logica.ActivosNoIngresadosExcepcion, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
+        self.assertRaises( TaxLogic.AssetsNotEnteredException, TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error7(self):
@@ -517,7 +519,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Validacion
-        self.assertRaises( Logica.ValorNegrativoIngresadoExcepcion, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
+        self.assertRaises( TaxLogic.NegativeValueEnteredException, TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
     
     def test_error8(self):
@@ -536,7 +538,7 @@ class ImpuestosTest(unittest.TestCase):
         GEA: int = 0
 
         #Validacion
-        self.assertRaises( Logica.CifrasIncoherentesExpecion, Logica.calcularImpuesto(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
+        self.assertRaises( TaxLogic.IncoherentFiguresExpection, TaxLogic.CalculateTax(TILA, OIGA, OINGA, VRFA, PSSA, APA, PCHA, VDA, GEA) )
 
 
 

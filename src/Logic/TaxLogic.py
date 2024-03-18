@@ -1,6 +1,6 @@
 #Aplicacion realizada por Luis Pablo Goez Y Valentina Carmona
 
-def calcularImpuesto(TILA: int, OIGA: int, OINGA: int, VRFA: int, PSSA: int, APA: int, PCHA: int, VDA: int, GEA: int):
+def CalculateTax(TILA: int, OIGA: int, OINGA: int, VRFA: int, PSSA: int, APA: int, PCHA: int, VDA: int, GEA: int):
     """
     Calcular el valor del impuesto a pagar
     TILA: Total ingresos laborales al año
@@ -54,27 +54,34 @@ def calcularImpuesto(TILA: int, OIGA: int, OINGA: int, VRFA: int, PSSA: int, APA
     
     """
     pass
-
-class RetencionMayorIngresosError( Exception ):
+#Mayor retencion de ingresos 
+class HigherIncomeRetentionException( Exception ):
     """La retencion en la fuente no puede ser mayor al valor total de ingresos."""
 
-class IngresoInvalidoExcepcion( Exception ):
+#Ingreso invalido
+class InvalidEntryException( Exception ):
     """Ingresaste un valor invalido."""
 
-class DigitosMuyGrandesError( Exception ):
+#Digitos muy grandes 
+class DigitsVeryLargeError( Exception ):
     """Numeros ingresados muy grandes, exceden el valor normal a calcular."""
 
-class DatosNoAgregadosError( Exception ):
+#Datos no agregados 
+class DataNotAggregatedError( Exception ):
     """Error! Datos obligatorios no agregados. Ingreselos para poder continuar."""
-
-class DeduciblesNegrativosError( Exception ):
+    
+#Duducibles negativos  
+class DeductiblesNegativeError( Exception ):
     """Error! Algo anda mal, el total de tus deducibles es menor que cero(0)."""
 
-class ActivosNoIngresadosExcepcion( Exception ):
+# Activos no ingresados
+class AssetsNotEnteredException( Exception ):
     """Activos no agregados, ingrese activos para continuar."""
 
-class ValorNegrativoIngresadoExcepcion( Exception ):
+# Valor negativo ingresos
+class NegativeValueEnteredException( Exception ):
     """No puedes ingresar valor negativos en esta casilla."""
 
-class CifrasIncoherentesExpecion( Exception ):
+#Cifras incoherentes
+class IncoherentFiguresExpection( Exception ):
     """Ingresaste un valor incoherente, verifique y cambie"""
