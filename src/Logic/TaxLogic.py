@@ -38,7 +38,7 @@ class IncoherentFiguresExpection( Exception ):
 #LOGICA
     
 #Calcular el valor del impuesto a pagar
-def CalculateTax(totalLaborIncomePerYear: int, otherTaxableIncomePerYear: int, otherNonTaxableIncomePerYear: int, sourceRetentionValuePerYear: int, socialSecurityPaymentInTheYear: int, pensionContributionsInTheYear: int, mortgageLoanPaymentPerYear: int, donationValuePerYear: int, educationalExpensesPerYear: int):
+def CalculateTax(totalLaborIncomePerYear: int, otherTaxableIncomePerYear: int, otherNonTaxableIncomePerYear: int, sourceRetentionValuePerYear: int, mortgageLoanPaymentPerYear: int, donationValuePerYear: int, educationalExpensesPerYear: int):
     """
     totalLaborIncomePerYear: Total ingresos laborales al año
     otherTaxableIncomePerYear: Otros ingresos gravables al año
@@ -65,7 +65,7 @@ def CalculateTax(totalLaborIncomePerYear: int, otherTaxableIncomePerYear: int, o
     totalUntaxedIncome = otherNonTaxableIncomePerYear
 
     #Calcular el Total de Ingresos Gravados
-    totalTaxedIncome =  ( totalLaborIncomePerYear + otherTaxableIncomePerYear) - totalUntaxedIncome
+    totalTaxedIncome =  ( totalLaborIncomePerYear + otherTaxableIncomePerYear + otherNonTaxableIncomePerYear) - totalUntaxedIncome
 
     #Calcular Total Costos Deducibles
     totalDeductibleCosts = socialSecurityPaymentInTheYear + pensionContributionsInTheYear + mortgageLoanPaymentPerYear + donationValuePerYear + educationalExpensesPerYear
@@ -76,21 +76,32 @@ def CalculateTax(totalLaborIncomePerYear: int, otherTaxableIncomePerYear: int, o
     #Calculamos tasa impositiva
     if taxValueUnits <= 1090:
         taxRate = 0
-    elif taxValueUnits > 1090 or taxValueUnits <= 1700:
-        taxRate = 0,19
-    elif taxValueUnits > 1700 or taxValueUnits <= 4100:
-        taxRate = 0,28
-    elif taxValueUnits > 4100 or taxValueUnits <= 8670:
-        taxRate = 0,33
-    elif taxValueUnits > 8670 or taxValueUnits <= 18970:
-        taxRate = 0,35
-    elif taxValueUnits > 18970 or taxValueUnits <= 31000:
-        taxRate = 0,37
+    elif taxValueUnits > 1090 and taxValueUnits <= 1700:
+        taxRate = 0.19
+    elif taxValueUnits > 1700 and taxValueUnits <= 4100:
+        taxRate = 0.28
+    elif taxValueUnits > 4100 and taxValueUnits <= 8670:
+        taxRate = 0.33
+    elif taxValueUnits > 8670 and taxValueUnits <= 18970:
+        taxRate = 0.35
+    elif taxValueUnits > 18970 and taxValueUnits <= 31000:
+        taxRate = 0.37
     elif taxValueUnits > 31000:
-        taxRate = 0,39
+        taxRate = 0.39
 
     #Calcular el valor a pagar por impuestos de rentas
     if taxRate == 0:
         amountToPayIncomeTaxes = 0
     else:
         amountToPayIncomeTaxes = (( totalTaxedIncome - totalDeductibleCosts ) * taxRate ) - sourceRetentionValuePerYear
+        round(amountToPayIncomeTaxes)
+        print(amountToPayIncomeTaxes)
+
+    #Lista de resultados
+    results = []
+    results.append(totalTaxedIncome)
+    results.append(totalUntaxedIncome)
+    results.append(totalDeductibleCosts)
+    results.append(amountToPayIncomeTaxes)
+
+    return results
