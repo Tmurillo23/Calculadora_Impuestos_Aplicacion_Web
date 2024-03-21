@@ -1,59 +1,7 @@
 #Aplicacion realizada por Luis Pablo Goez Y Valentina Carmona
 
-def CalculateTax(TILA: int, OIGA: int, OINGA: int, VRFA: int, PSSA: int, APA: int, PCHA: int, VDA: int, GEA: int):
-    """
-    Calcular el valor del impuesto a pagar
-    TILA: Total ingresos laborales al año
-    OIGA: Otros ingresos gravables al año
-    OINGA: Otros ingresos no gravables al año
-    VRFA: Valor retencion en la fuente al año
-    PCHA: Pago credito Hipotecario al año
-    VDA: Valor donaciones al año
-    GEA: Gastos en educacion al año
-    VSSA: Valor a la seguridad social al año
-    APA: Aporte a la pension al año
-    
+# EXCEPCIONES
 
-    #Calcular El VSSA y APA
-    PSSA = ( TILA * 4 ) / 100
-    APA = ( TILA * 4 ) / 100
-
-    #Calcular Total de Ingresos NO Gravables
-    TING = OINGA
-
-    #Calcular el Total de Ingresos Gravados
-    TIG =  ( TILA + OIGA) - TING
-
-    #Calcular Total Costos Deducibles
-    TCD = PSSA + APA + PCHA + VDA + GEA
-
-    #Calcular UVT (Unidades de valor tributario)
-    UVT = TIG / 46076
-
-    #Calculamos tasa impositiva
-    if UVT <= 1090:
-        TI = 0
-    elif UVT > 1090 or UVT <= 1700:
-        TI = 0,19
-    elif UVT > 1700 or UVT <= 4100:
-        TI = 0,28
-    elif UVT > 4100 or UVT <= 8670:
-        TI = 0,33
-    elif UVT > 8670 or UVT <= 18970:
-        TI = 0,35
-    elif UVT > 18970 or UVT <= 31000:
-        TI = 0,37
-    elif UVT > 31000:
-        TI = 0,39
-
-    #Calcular el valor a pagar por impuestos de rentas
-    if TI == 0:
-        VPIR = 0
-    else:
-        VPIR = (( TIG - TCD ) * TI ) - VRFA
-    
-    """
-    pass
 #Mayor retencion de ingresos 
 class HigherIncomeRetentionException( Exception ):
     """La retencion en la fuente no puede ser mayor al valor total de ingresos."""
@@ -85,3 +33,64 @@ class NegativeValueEnteredException( Exception ):
 #Cifras incoherentes
 class IncoherentFiguresExpection( Exception ):
     """Ingresaste un valor incoherente, verifique y cambie"""
+
+
+#LOGICA
+    
+#Calcular el valor del impuesto a pagar
+def CalculateTax(totalLaborIncomePerYear: int, otherTaxableIncomePerYear: int, otherNonTaxableIncomePerYear: int, sourceRetentionValuePerYear: int, socialSecurityPaymentInTheYear: int, pensionContributionsInTheYear: int, mortgageLoanPaymentPerYear: int, donationValuePerYear: int, educationalExpensesPerYear: int):
+    """
+    totalLaborIncomePerYear: Total ingresos laborales al año
+    otherTaxableIncomePerYear: Otros ingresos gravables al año
+    otherNonTaxableIncomePerYear: Otros ingresos no gravables al año
+    sourceRetentionValuePerYear: Valor retencion en la fuente al año
+    mortgageLoanPaymentPerYear: Pago credito Hipotecario al año
+    donationValuePerYear: Valor donaciones al año
+    educationalExpensesPerYear: Gastos en educacion al año
+    socialSecurityPaymentInTheYear: Valor a la seguridad social al año
+    pensionContributionsInTheYear: Aporte a la pension al año
+    """
+    #Porcentaje seguridad social
+    SOCIALSECURITYPERCENTAGE = 4
+
+    #Porcentaje aporte a la pension
+    PENSIONCONTRIBUTIONPERCENTAGE = 4
+
+
+    #Calcular el valor a la seguridad social en el año y el aporte a la pension en el año
+    socialSecurityPaymentInTheYear = ( totalLaborIncomePerYear * SOCIALSECURITYPERCENTAGE ) / 100
+    pensionContributionsInTheYear = ( totalLaborIncomePerYear * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
+
+    #Calcular Total de Ingresos NO Gravables
+    totalUntaxedIncome = otherNonTaxableIncomePerYear
+
+    #Calcular el Total de Ingresos Gravados
+    totalTaxedIncome =  ( totalLaborIncomePerYear + otherTaxableIncomePerYear) - totalUntaxedIncome
+
+    #Calcular Total Costos Deducibles
+    totalDeductibleCosts = socialSecurityPaymentInTheYear + pensionContributionsInTheYear + mortgageLoanPaymentPerYear + donationValuePerYear + educationalExpensesPerYear
+
+    #Calcular las unidades de valor tributario
+    taxValueUnits = totalTaxedIncome / 46076
+
+    #Calculamos tasa impositiva
+    if taxValueUnits <= 1090:
+        taxRate = 0
+    elif taxValueUnits > 1090 or taxValueUnits <= 1700:
+        taxRate = 0,19
+    elif taxValueUnits > 1700 or taxValueUnits <= 4100:
+        taxRate = 0,28
+    elif taxValueUnits > 4100 or taxValueUnits <= 8670:
+        taxRate = 0,33
+    elif taxValueUnits > 8670 or taxValueUnits <= 18970:
+        taxRate = 0,35
+    elif taxValueUnits > 18970 or taxValueUnits <= 31000:
+        taxRate = 0,37
+    elif taxValueUnits > 31000:
+        taxRate = 0,39
+
+    #Calcular el valor a pagar por impuestos de rentas
+    if taxRate == 0:
+        amountToPayIncomeTaxes = 0
+    else:
+        amountToPayIncomeTaxes = (( totalTaxedIncome - totalDeductibleCosts ) * taxRate ) - sourceRetentionValuePerYear
