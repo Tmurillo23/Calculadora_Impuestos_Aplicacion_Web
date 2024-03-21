@@ -39,6 +39,7 @@ class IncoherentFiguresExpection( Exception ):
     
 #Calcular el valor del impuesto a pagar
 def CalculateTax(totalLaborIncomePerYear: int, otherTaxableIncomePerYear: int, otherNonTaxableIncomePerYear: int, sourceRetentionValuePerYear: int, mortgageLoanPaymentPerYear: int, donationValuePerYear: int, educationalExpensesPerYear: int):
+    
     """
     totalLaborIncomePerYear: Total ingresos laborales al año
     otherTaxableIncomePerYear: Otros ingresos gravables al año
