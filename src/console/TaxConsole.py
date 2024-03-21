@@ -1,5 +1,7 @@
-from Logic import TaxLogic
+import sys
+sys.path.append("src")
 
+from Logic import TaxLogic
 
 def showMenu():
     print("Bienvenido a la calculadora de impuestos, por favor seleccione una opción")
