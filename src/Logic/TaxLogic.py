@@ -69,22 +69,22 @@ def calculateTax(total_labor_income_per_year: int, other_taxable_income_per_year
 
     #CONTROL DE ERROR
     if type(total_labor_income_per_year) == str or type(other_taxable_income_per_year) == str or type(other_non_taxable_income_per_year) == str or type(source_retention_value_per_year) == str or type(mortgage_loan_payment_per_year) == str or type(donation_value_per_year) == str or type(educational_expenses_per_year) == str:
-        raise InvalidEntryException
+        raise InvalidEntryException("Ingresaste un valor invalido.")
     
     if (total_labor_income_per_year < 0 or other_non_taxable_income_per_year < 0) and other_taxable_income_per_year < 0:
-        raise NegativeValueEnteredException
+        raise NegativeValueEnteredException("No puedes ingresar valor negativos en esta casilla.")
 
     if source_retention_value_per_year > total_labor_income_per_year:
-        raise HigherIncomeRetentionException
+        raise HigherIncomeRetentionException("La retencion en la fuente no puede ser mayor al valor total de ingresos.")
 
     if len(str(total_labor_income_per_year)) > MAXDIGITS or len(str(other_taxable_income_per_year)) > MAXDIGITS or len(str(other_non_taxable_income_per_year)) > MAXDIGITS or len(str(source_retention_value_per_year)) > MAXDIGITS or len(str(mortgage_loan_payment_per_year)) > MAXDIGITS or len(str(donation_value_per_year)) > MAXDIGITS or len(str(educational_expenses_per_year)) > MAXDIGITS:
-        raise DigitsVeryLargeError
+        raise DigitsVeryLargeError("Numeros ingresados muy grandes, exceden el valor normal a calcular.")
     
     if other_taxable_income_per_year == 0 and other_non_taxable_income_per_year == 0:
-        raise AssetsNotEnteredException
+        raise AssetsNotEnteredException("Activos no agregados, ingrese activos para continuar.")
 
     if total_labor_income_per_year == 0:
-        raise DataNotAggregatedError
+        raise DataNotAggregatedError("Error! Datos obligatorios no agregados. Ingreselos para poder continuar.")
 
     if total_labor_income_per_year > 0 and total_labor_income_per_year < 1:
         num_str = str(total_labor_income_per_year)
@@ -93,7 +93,7 @@ def calculateTax(total_labor_income_per_year: int, other_taxable_income_per_year
             decimal_part = num_str.split('.')[1]
         
         if len(decimal_part) == NUMBERLIMIT:
-            raise IncoherentFiguresExpection
+            raise IncoherentFiguresExpection("Ingresaste un valor incoherente, verifique y cambie")
     
 
     #Calcular el valor a la seguridad social en el año y el aporte a la pension en el año
@@ -112,7 +112,7 @@ def calculateTax(total_labor_income_per_year: int, other_taxable_income_per_year
 
     #Validacion deducibles no sean menores que cero
     if total_deductible_costs < 0:
-        raise DeductiblesNegativeError
+        raise DeductiblesNegativeError("Error! Algo anda mal, el total de tus deducibles es menor que cero(0).")
 
 
     #Calcular las unidades de valor tributario
