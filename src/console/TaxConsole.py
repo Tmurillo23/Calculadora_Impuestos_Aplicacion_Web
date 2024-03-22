@@ -9,15 +9,15 @@ def showMenu():
     print("2. Salir")
 
 def option_1():
-    totalLaborIncomePerYear = input ("Ingrese el total de ingresos laborales en el año: ")
-    otherTaxableIncomePerYear = input ("Ingrese el total de otros ingresos gravables al año: ")
-    otherNonTaxableIncomePerYear = input ("Ingrese el totral de otros ingresos no gravables al año: ")
-    sourceRetentionValuePerYear = input ("Ingrese el valor de retención en la fuente al año: ")
-    mortgageLoanPaymentPerYear = input ("Ingrese el valor de pago de credito hipotecario al año: ")
-    donationValuePerYear = input ("Ingrese el valor de donaciones del año: ")
-    educationalExpensesPerYear = input ("Ingrese el valor de gasto de edicaión al año: ")
+    total_labor_income_per_year = input ("Ingrese el total de ingresos laborales en el año: ")
+    other_taxable_income_per_year = input ("Ingrese el total de otros ingresos gravables al año: ")
+    other_non_taxable_income_per_year = input ("Ingrese el totral de otros ingresos no gravables al año: ")
+    source_retention_value_per_year = input ("Ingrese el valor de retención en la fuente al año: ")
+    mortgage_loan_payment_per_year = input ("Ingrese el valor de pago de credito hipotecario al año: ")
+    donation_value_per_year = input ("Ingrese el valor de donaciones del año: ")
+    educational_expenses_per_year = input ("Ingrese el valor de gasto de edicaión al año: ")
 
-    tax =TaxLogic.CalculateTax (totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)   
+    tax =TaxLogic.CalculateTax (total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_year, mortgage_loan_payment_per_year, donation_value_per_year, educational_expenses_per_year)   
 
     print ("El valor de renta a pagar es: ")
     print (tax)
