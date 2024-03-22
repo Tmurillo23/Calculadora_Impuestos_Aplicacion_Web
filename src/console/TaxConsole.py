@@ -15,11 +15,11 @@ def option_1():
     print("NOTA: Evite dejar celdas vacias agregue 0.")
     total_labor_income_per_year = int(input("Ingrese el total de ingresos laborales en el año: "))
     other_taxable_income_per_year = int(input("Ingrese el total de otros ingresos gravables al año: "))
-    other_non_taxable_income_per_year = int(input("Ingrese el totral de otros ingresos no gravables al año: "))
+    other_non_taxable_income_per_year = int(input("Ingrese el total de otros ingresos no gravables al año: "))
     source_retention_value_per_year = int(input("Ingrese el valor de retención en la fuente al año: "))
     mortgage_loan_payment_per_year = int(input("Ingrese el valor de pago de credito hipotecario al año: "))
     donation_value_per_year = int(input("Ingrese el valor de donaciones del año: "))
-    educational_expenses_per_year = int(input("Ingrese el valor de gasto de edicaión al año: "))
+    educational_expenses_per_year = int(input("Ingrese el valor de gasto de educación al año: "))
 
     tax = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_year, mortgage_loan_payment_per_year, donation_value_per_year, educational_expenses_per_year)   
 
