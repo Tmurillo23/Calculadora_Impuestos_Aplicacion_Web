@@ -42,4 +42,20 @@ En este proyecto tenemos dos carpetas principales, las cuales son src(en esta ca
     -Carpeta test, en esta carpeta estan las pruebas unitarias. 
     
 ## Uso 
-Para poder ejecutar las pruebas unitarias nos vamos ha la carpeta tet y entramos al archivo TaxTest, tambien podemos accder a la carpeta src, la la cual tenemos otras dos carpetas, en una se encuentra la cosola de en la otra la logica del proyecto.
+Para poder ejecutar las pruebas unitarias nos vamos ha la carpeta tets y entramos al archivo TaxTest, tambien podemos acceder a la carpeta src, a la cual tenemos otras dos carpetas, en una se encuentra la cosola de en la otra la logica del proyecto, en la consola encontraremos el menú, en el cual ingresaremos la opcion que necesitemos, si queremos ingresar los datos, ingresamos el número 1 en la cosola, de lo contario ingresamos el número 2 y esta opcion inmediatamente te saca del menú; cuando ingresas a la opcion 1 te pedira los siguientes datos:
+-Total de ingresos laborales en el año
+-Total de otros ingresos gravables al año
+-Total de otros ingresos no gravables al año
+-Total del valor de retención en la fuente al año
+-Total del valor de pago de credito hipotecario al año
+-Total del valor de donaciones del año
+-Total del valor de gasto de educación al año
+
+## Tener en cuenta lo siguiente para que no lance casos de error:
+-No ingresar los ingresos laborales totales en el año
+-Ingresar valores en texto 
+-Ingresar valores muy grandes > 10 digitos 
+-No ingresar los datos obligatorios como por ejemplo 
+-Ingresar los deducibles negativos 
+-No ingresar los activos 
+-Ingresar un valor negativo en los ingresos 
