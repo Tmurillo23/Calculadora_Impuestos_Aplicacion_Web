@@ -38,71 +38,113 @@ class IncoherentFiguresExpection( Exception ):
 #LOGICA
     
 #Calcular el valor del impuesto a pagar
-def CalculateTax(totalLaborIncomePerYear: int, otherTaxableIncomePerYear: int, otherNonTaxableIncomePerYear: int, sourceRetentionValuePerYear: int, mortgageLoanPaymentPerYear: int, donationValuePerYear: int, educationalExpensesPerYear: int):
+def calculateTax(total_labor_income_per_year: int, other_taxable_income_per_year: int, other_non_taxable_income_per_year: int, source_retention_value_per_year: int, mortgage_loan_payment_per_year: int, donation_value_per_year: int, educational_expenses_per_year: int):
     
     """
-    totalLaborIncomePerYear: Total ingresos laborales al año
-    otherTaxableIncomePerYear: Otros ingresos gravables al año
-    otherNonTaxableIncomePerYear: Otros ingresos no gravables al año
-    sourceRetentionValuePerYear: Valor retencion en la fuente al año
-    mortgageLoanPaymentPerYear: Pago credito Hipotecario al año
-    donationValuePerYear: Valor donaciones al año
-    educationalExpensesPerYear: Gastos en educacion al año
-    socialSecurityPaymentInTheYear: Valor a la seguridad social al año
-    pensionContributionsInTheYear: Aporte a la pension al año
+    total_labor_income_per_year: Total ingresos laborales al año
+    other_taxable_income_per_year: Otros ingresos gravables al año
+    other_non_taxable_income_per_year: Otros ingresos no gravables al año
+    source_retention_value_per_year: Valor retencion en la fuente al año
+    mortgage_loan_payment_per_year: Pago credito Hipotecario al año
+    donation_value_per_year: Valor donaciones al año
+    educational_expenses_per_year: Gastos en educacion al año
+    social_security_payment_in_the_year: Valor a la seguridad social al año
+    pension_contributions_in_the_year: Aporte a la pension al año
     """
+
+    #CONSTANTES
+
     #Porcentaje seguridad social
     SOCIALSECURITYPERCENTAGE = 4
 
     #Porcentaje aporte a la pension
     PENSIONCONTRIBUTIONPERCENTAGE = 4
 
+    #Maximo de digitos
+    MAXDIGITS = 10
+
+    #Limite de cifras
+    NUMBERLIMIT = 6
+
+
+    #CONTROL DE ERROR
+    if type(total_labor_income_per_year) == str or type(other_taxable_income_per_year) == str or type(other_non_taxable_income_per_year) == str or type(source_retention_value_per_year) == str or type(mortgage_loan_payment_per_year) == str or type(donation_value_per_year) == str or type(educational_expenses_per_year) == str:
+        raise InvalidEntryException
+    
+    if (total_labor_income_per_year < 0 or other_non_taxable_income_per_year < 0) and other_taxable_income_per_year < 0:
+        raise NegativeValueEnteredException
+
+    if source_retention_value_per_year > total_labor_income_per_year:
+        raise HigherIncomeRetentionException
+
+    if len(str(total_labor_income_per_year)) > MAXDIGITS or len(str(other_taxable_income_per_year)) > MAXDIGITS or len(str(other_non_taxable_income_per_year)) > MAXDIGITS or len(str(source_retention_value_per_year)) > MAXDIGITS or len(str(mortgage_loan_payment_per_year)) > MAXDIGITS or len(str(donation_value_per_year)) > MAXDIGITS or len(str(educational_expenses_per_year)) > MAXDIGITS:
+        raise DigitsVeryLargeError
+    
+    if other_taxable_income_per_year == 0 and other_non_taxable_income_per_year == 0:
+        raise AssetsNotEnteredException
+
+    if total_labor_income_per_year == 0:
+        raise DataNotAggregatedError
+
+    if total_labor_income_per_year > 0 and total_labor_income_per_year < 1:
+        num_str = str(total_labor_income_per_year)
+
+        if '.' in num_str:
+            decimal_part = num_str.split('.')[1]
+        
+        if len(decimal_part) == NUMBERLIMIT:
+            raise IncoherentFiguresExpection
+    
 
     #Calcular el valor a la seguridad social en el año y el aporte a la pension en el año
-    socialSecurityPaymentInTheYear = ( totalLaborIncomePerYear * SOCIALSECURITYPERCENTAGE ) / 100
-    pensionContributionsInTheYear = ( totalLaborIncomePerYear * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
+    social_security_payment_in_the_year = ( total_labor_income_per_year * SOCIALSECURITYPERCENTAGE ) / 100
+    pension_contributions_in_the_year = ( total_labor_income_per_year * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
 
     #Calcular Total de Ingresos NO Gravables
-    totalUntaxedIncome = otherNonTaxableIncomePerYear
+    total_untaxed_income = other_non_taxable_income_per_year
 
     #Calcular el Total de Ingresos Gravados
-    totalTaxedIncome =  ( totalLaborIncomePerYear + otherTaxableIncomePerYear + otherNonTaxableIncomePerYear) - totalUntaxedIncome
+    total_taxed_income =  ( total_labor_income_per_year + other_taxable_income_per_year + other_non_taxable_income_per_year) - total_untaxed_income
 
     #Calcular Total Costos Deducibles
-    totalDeductibleCosts = socialSecurityPaymentInTheYear + pensionContributionsInTheYear + mortgageLoanPaymentPerYear + donationValuePerYear + educationalExpensesPerYear
+    total_deductible_costs = social_security_payment_in_the_year + pension_contributions_in_the_year + mortgage_loan_payment_per_year + donation_value_per_year + educational_expenses_per_year
+
+
+    #Validacion deducibles no sean menores que cero
+    if total_deductible_costs < 0:
+        raise DeductiblesNegativeError
+
 
     #Calcular las unidades de valor tributario
-    taxValueUnits = totalTaxedIncome / 46076
+    tax_value_units = total_taxed_income / 46076
 
     #Calculamos tasa impositiva
-    if taxValueUnits <= 1090:
-        taxRate = 0
-    elif taxValueUnits > 1090 and taxValueUnits <= 1700:
-        taxRate = 0.19
-    elif taxValueUnits > 1700 and taxValueUnits <= 4100:
-        taxRate = 0.28
-    elif taxValueUnits > 4100 and taxValueUnits <= 8670:
-        taxRate = 0.33
-    elif taxValueUnits > 8670 and taxValueUnits <= 18970:
-        taxRate = 0.35
-    elif taxValueUnits > 18970 and taxValueUnits <= 31000:
-        taxRate = 0.37
-    elif taxValueUnits > 31000:
-        taxRate = 0.39
+    if tax_value_units <= 1090:
+        tax_rate = 0
+    elif tax_value_units > 1090 and tax_value_units <= 1700:
+        tax_rate = 0.19
+    elif tax_value_units > 1700 and tax_value_units <= 4100:
+        tax_rate = 0.28
+    elif tax_value_units > 4100 and tax_value_units <= 8670:
+        tax_rate = 0.33
+    elif tax_value_units > 8670 and tax_value_units <= 18970:
+        tax_rate = 0.35
+    elif tax_value_units > 18970 and tax_value_units <= 31000:
+        tax_rate = 0.37
+    elif tax_value_units > 31000:
+        tax_rate = 0.39
 
     #Calcular el valor a pagar por impuestos de rentas
-    if taxRate == 0:
-        amountToPayIncomeTaxes = 0
+    if tax_rate == 0:
+        amount_to_pay_income_taxes = 0
     else:
-        amountToPayIncomeTaxes = (( totalTaxedIncome - totalDeductibleCosts ) * taxRate ) - sourceRetentionValuePerYear
-        round(amountToPayIncomeTaxes)
-        print(amountToPayIncomeTaxes)
+        amount_to_pay_income_taxes = (( total_taxed_income - total_deductible_costs ) * tax_rate ) - source_retention_value_per_year
 
     #Lista de resultados
     results = []
-    results.append(totalTaxedIncome)
-    results.append(totalUntaxedIncome)
-    results.append(totalDeductibleCosts)
-    results.append(amountToPayIncomeTaxes)
+    results.append(total_taxed_income)
+    results.append(total_untaxed_income)
+    results.append(total_deductible_costs)
+    results.append(round(amount_to_pay_income_taxes))
 
     return results

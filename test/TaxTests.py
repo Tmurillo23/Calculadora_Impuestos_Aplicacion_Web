@@ -7,7 +7,7 @@ sys.path.append("src")
 
 from Logic import TaxLogic
 
-class taxesTest(unittest.TestCase):
+class TaxesTest(unittest.TestCase):
 
 
     #PRUEBAS UNITARIAS NORMALES
@@ -15,183 +15,164 @@ class taxesTest(unittest.TestCase):
     def testNormal1(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 15600000
-        otherTaxableIncomePerYear: int = 9600000
-        otherNonTaxableIncomePerYear: int = 516000 
-        sourceRetentionValuePerYear: int = 600000 
-        socialSecurityPaymentInTheYear: int = 624000 
-        pensionContributionsInTheYear: int = 624000 
-        mortgageLoanPaymentPerYear: int = 0 
-        donationValuePerYear: int = 0 
-        educationalExpensesPerYear: int = 0 
+        total_labor_income_per_year: int = 15600000
+        other_taxable_income_per_year: int = 9600000
+        other_non_taxable_income_per_year: int = 516000 
+        source_retention_value_per_pear: int = 600000
+        mortgage_loan_payment_per_year: int = 0 
+        donation_value_per_year: int = 0 
+        educationa_expenses_per_year: int = 0 
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 25200000 
-        totalUntaxedIncome = 516000 
-        totalDeductibleCosts = 1248000 
-        amountToPayIncomeTaxes = 0 
-
+        total_taxed_income = 25200000 
+        total_untaxed_income = 516000 
+        total_deductible_costs = 1248000 
+        amount_to_pay_income_taxes = 0 
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
     
 
     def testNormal2(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 24000000
-        otherTaxableIncomePerYear: int = 13000000
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 1000000
-        socialSecurityPaymentInTheYear: int = 960000
-        pensionContributionsInTheYear: int = 960000
-        mortgageLoanPaymentPerYear: int = 9600000
-        donationValuePerYear: int = 200000
-        educationalExpensesPerYear: int = 100000
+        total_labor_income_per_year: int = 24000000
+        other_taxable_income_per_year: int = 13000000
+        other_non_taxable_income_per_year: int = 0
+        source_retention_value_per_pear: int = 1000000
+        mortgage_loan_payment_per_year: int = 9600000
+        donation_value_per_year: int = 200000
+        educationa_expenses_per_year: int = 100000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 37000000
-        totalUntaxedIncome = 0
-        totalDeductibleCosts = 11820000
-        amountToPayIncomeTaxes = 0
-
+        total_taxed_income = 37000000
+        total_untaxed_income = 0
+        total_deductible_costs = 11820000
+        amount_to_pay_income_taxes = 0
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
     
     def testNormal3(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 60000000
-        otherTaxableIncomePerYear: int = 30000000
-        otherNonTaxableIncomePerYear: int = 1200000
-        sourceRetentionValuePerYear: int = 4000000
-        socialSecurityPaymentInTheYear: int = 2400000
-        pensionContributionsInTheYear: int = 2400000
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 10000000
+        total_labor_income_per_year: int = 60000000
+        other_taxable_income_per_year: int = 30000000
+        other_non_taxable_income_per_year: int = 1200000
+        source_retention_value_per_pear: int = 4000000
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 10000000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 90000000
-        totalUntaxedIncome = 1200000
-        totalDeductibleCosts = 14800000
-        amountToPayIncomeTaxes = 2300000
-
+        total_taxed_income = 90000000
+        total_untaxed_income = 1200000
+        total_deductible_costs = 14800000
+        amount_to_pay_income_taxes = 17056000
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
     
     def testNormal4(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 96000000
-        otherTaxableIncomePerYear: int = 35500000
-        otherNonTaxableIncomePerYear: int = 3000000
-        sourceRetentionValuePerYear: int = 4800000
-        socialSecurityPaymentInTheYear: int = 3840000
-        pensionContributionsInTheYear: int = 3840000
-        mortgageLoanPaymentPerYear: int = 12000000
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 1000000
+        total_labor_income_per_year: int = 96000000
+        other_taxable_income_per_year: int = 35500000
+        other_non_taxable_income_per_year: int = 3000000
+        source_retention_value_per_pear: int = 4800000
+        mortgage_loan_payment_per_year: int = 12000000
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 1000000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 131500000
-        totalUntaxedIncome = 3000000
-        totalDeductibleCosts = 20680000
-        amountToPayIncomeTaxes = 4305000
-
+        total_taxed_income = 131500000
+        total_untaxed_income = 3000000
+        total_deductible_costs = 20680000
+        amount_to_pay_income_taxes = 26229600
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
     
     def testNormal5(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 120000000
-        otherTaxableIncomePerYear: int = 0
-        otherNonTaxableIncomePerYear: int = 5000000
-        sourceRetentionValuePerYear: int = 5000000
-        socialSecurityPaymentInTheYear: int = 4800000
-        pensionContributionsInTheYear: int = 4800000
-        mortgageLoanPaymentPerYear: int = 1300000
-        donationValuePerYear: int = 3000000
-        educationalExpensesPerYear: int = 7000000
+        total_labor_income_per_year: int = 120000000
+        other_taxable_income_per_year: int = 0
+        other_non_taxable_income_per_year: int = 5000000
+        source_retention_value_per_pear: int = 5000000
+        mortgage_loan_payment_per_year: int = 1300000
+        donation_value_per_year: int = 3000000
+        educationa_expenses_per_year: int = 7000000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 120000000
-        totalUntaxedIncome = 5000000
-        totalDeductibleCosts = 20900000
-        amountToPayIncomeTaxes = 1900000
-
+        total_taxed_income = 120000000
+        total_untaxed_income = 5000000
+        total_deductible_costs = 20900000
+        amount_to_pay_income_taxes = 22748000
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
     
     def testNormal6(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 420000000
-        otherTaxableIncomePerYear: int = 180000000
-        otherNonTaxableIncomePerYear: int = 10000000
-        sourceRetentionValuePerYear: int = 120000000
-        socialSecurityPaymentInTheYear: int = 16800000
-        pensionContributionsInTheYear: int = 16800000
-        mortgageLoanPaymentPerYear: int = 36000000
-        donationValuePerYear: int = 5000000
-        educationalExpensesPerYear: int = 24000000
+        total_labor_income_per_year: int = 420000000
+        other_taxable_income_per_year: int = 180000000
+        other_non_taxable_income_per_year: int = 10000000
+        source_retention_value_per_pear: int = 120000000
+        mortgage_loan_payment_per_year: int = 36000000
+        donation_value_per_year: int = 5000000
+        educationa_expenses_per_year: int = 24000000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 600000000
-        totalUntaxedIncome = 10000000
-        totalDeductibleCosts = 98600000
-        amountToPayIncomeTaxes = 15400000
-
+        total_taxed_income = 600000000
+        total_untaxed_income = 10000000
+        total_deductible_costs = 98600000
+        amount_to_pay_income_taxes = 55490000
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
     
-
 
     #PRUEBAS UNITARIAS EXTRAORDINARIAS
     
@@ -199,186 +180,172 @@ class taxesTest(unittest.TestCase):
     def testExtraordinary1(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 15600000
-        otherTaxableIncomePerYear: int = 0
-        otherNonTaxableIncomePerYear: int = 20000000
-        sourceRetentionValuePerYear: int = 600000
-        socialSecurityPaymentInTheYear: int = 624000
-        pensionContributionsInTheYear: int = 624000
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = 15600000
+        other_taxable_income_per_year: int = 0
+        other_non_taxable_income_per_year: int = 20000000
+        source_retention_value_per_pear: int = 600000
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 0
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 15600000
-        totalUntaxedIncome = 20000000
-        totalDeductibleCosts = 1248000
-        amountToPayIncomeTaxes = 0
-
+        total_taxed_income = 15600000
+        total_untaxed_income = 20000000
+        total_deductible_costs = 1248000
+        amount_to_pay_income_taxes = 0
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
     
     #Ganarse la loteria
     def testExtraordinary2(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 15600000
-        otherTaxableIncomePerYear: int = 5000000000
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 1000000
-        socialSecurityPaymentInTheYear: int = 624000
-        pensionContributionsInTheYear: int = 624000
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 20000000
+        total_labor_income_per_year: int = 15600000
+        other_taxable_income_per_year: int = 5000000000
+        other_non_taxable_income_per_year: int = 0
+        source_retention_value_per_pear: int = 1000000
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 20000000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 5015600000
-        totalUntaxedIncome = 0
-        totalDeductibleCosts = 21248000
-        amountToPayIncomeTaxes = 931716000
-
+        total_taxed_income = 5015600000
+        total_untaxed_income = 0
+        total_deductible_costs = 21248000
+        amount_to_pay_income_taxes = 1946797280
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
     
 
     #Perdida en otros ingresos gravables
     def testExtraordinary3(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 70000000
-        otherTaxableIncomePerYear: int = -100000000
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 4800000
-        socialSecurityPaymentInTheYear: int = 2800000
-        pensionContributionsInTheYear: int = 2800000
-        mortgageLoanPaymentPerYear: int = 12000000
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 15000000
+        total_labor_income_per_year: int = 70000000
+        other_taxable_income_per_year: int = -100000000
+        other_non_taxable_income_per_year: int = 0
+        source_retention_value_per_pear: int = 4800000
+        mortgage_loan_payment_per_year: int = 12000000
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 15000000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = -30000000
-        totalUntaxedIncome = 0
-        totalDeductibleCosts = 32600000
-        amountToPayIncomeTaxes = 0
+        total_taxed_income = -30000000
+        total_untaxed_income = 0
+        total_deductible_costs = 32600000
+        amount_to_pay_income_taxes = 0
 
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
     
     #Donaciones de alto valor
     def testExtraordinary4(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 30000000
-        otherTaxableIncomePerYear: int = 15000000
-        otherNonTaxableIncomePerYear: int = 5000000
-        sourceRetentionValuePerYear: int = 3000000
-        socialSecurityPaymentInTheYear: int = 1200000
-        pensionContributionsInTheYear: int = 1200000
-        mortgageLoanPaymentPerYear: int = 10000000
-        donationValuePerYear: int = 50000000
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = 30000000
+        other_taxable_income_per_year: int = 15000000
+        other_non_taxable_income_per_year: int = 5000000
+        source_retention_value_per_pear: int = 3000000
+        mortgage_loan_payment_per_year: int = 10000000
+        donation_value_per_year: int = 50000000
+        educationa_expenses_per_year: int = 0
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 45000000
-        totalUntaxedIncome = 5000000
-        totalDeductibleCosts = 62400000
-        amountToPayIncomeTaxes = 0
+        total_taxed_income = 45000000
+        total_untaxed_income = 5000000
+        total_deductible_costs = 62400000
+        amount_to_pay_income_taxes = 0
 
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
     
     #Herencia
     def testExtraordinary5(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 24000000
-        otherTaxableIncomePerYear: int = 9600000
-        otherNonTaxableIncomePerYear: int = 350000000
-        sourceRetentionValuePerYear: int = 1500000
-        socialSecurityPaymentInTheYear: int = 960000
-        pensionContributionsInTheYear: int = 960000
-        mortgageLoanPaymentPerYear: int = 500000
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 5000000
+        total_labor_income_per_year: int = 24000000
+        other_taxable_income_per_year: int = 9600000
+        other_non_taxable_income_per_year: int = 350000000
+        source_retention_value_per_pear: int = 1500000
+        mortgage_loan_payment_per_year: int = 500000
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 5000000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 33600000
-        totalUntaxedIncome = 350000000
-        totalDeductibleCosts = 7420000
-        amountToPayIncomeTaxes = 0
+        total_taxed_income = 33600000
+        total_untaxed_income = 350000000
+        total_deductible_costs = 7420000
+        amount_to_pay_income_taxes = 0
 
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
     
     #Gastos extraordinarios en educacion
     def testExtraordinary6(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 17000000
-        otherTaxableIncomePerYear: int = 5000000
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 1500000
-        socialSecurityPaymentInTheYear: int = 680000
-        pensionContributionsInTheYear: int = 680000
-        mortgageLoanPaymentPerYear: int = 1000000
-        donationValuePerYear: int = 800000
-        educationalExpensesPerYear: int = 20000000
+        total_labor_income_per_year: int = 17000000
+        other_taxable_income_per_year: int = 5000000
+        other_non_taxable_income_per_year: int = 0
+        source_retention_value_per_pear: int = 1500000
+        mortgage_loan_payment_per_year: int = 1000000
+        donation_value_per_year: int = 800000
+        educationa_expenses_per_year: int = 20000000
 
         #Proceso
-        result = TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear)
+        result = TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
         #Datos de salida esperados
-        totalTaxedIncome = 22000000
-        totalUntaxedIncome = 0
-        totalDeductibleCosts = 23160000
-        amountToPayIncomeTaxes = 0
+        total_taxed_income = 22000000
+        total_untaxed_income = 0
+        total_deductible_costs = 23160000
+        amount_to_pay_income_taxes = 0
 
 
         #Validacion de datos
-        self.assertEqual( totalTaxedIncome, result[0] )
-        self.assertEqual( totalUntaxedIncome, result[1] )
-        self.assertEqual( totalDeductibleCosts, result[2] )
-        self.assertEqual( amountToPayIncomeTaxes, result[3] )
+        self.assertEqual( total_taxed_income, result[0] )
+        self.assertEqual( total_untaxed_income, result[1] )
+        self.assertEqual( total_deductible_costs, result[2] )
+        self.assertEqual( amount_to_pay_income_taxes, result[3] )
 
 
     
@@ -388,144 +355,136 @@ class taxesTest(unittest.TestCase):
     def testError1(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 15000000
-        otherTaxableIncomePerYear: int = 10000000
-        otherNonTaxableIncomePerYear: int = 1000000
-        sourceRetentionValuePerYear: int = 30000000
-        socialSecurityPaymentInTheYear: int = 600000
-        pensionContributionsInTheYear: int = 600000
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 5000000
+        total_labor_income_per_year: int = 15000000
+        other_taxable_income_per_year: int = 10000000
+        other_non_taxable_income_per_year: int = 1000000
+        source_retention_value_per_pear: int = 30000000
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 5000000
 
         #Validacion
-        self.assertRaises( TaxLogic.HigherIncomeRetentionException, TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear) )
+        with self.assertRaises(TaxLogic.HigherIncomeRetentionException):
+            TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
     
     #Error por ingresar texto
     def testError2(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = "Mil millones"
-        otherTaxableIncomePerYear: int = 0
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 0
-        socialSecurityPaymentInTheYear: int = 0
-        pensionContributionsInTheYear: int = 0
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = "Mil millones"
+        other_taxable_income_per_year: int = 0
+        other_non_taxable_income_per_year: int = 0
+        source_retention_value_per_pear: int = 0
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 0
 
         #Validacion
-        self.assertRaises( TaxLogic.InvalidEntryException, TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear) )
+        with self.assertRaises(TaxLogic.InvalidEntryException):
+            TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
     
     #Error digitos muy grandes
     def testError3(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 8000000000
-        otherTaxableIncomePerYear: int = 1000000000
-        otherNonTaxableIncomePerYear: int = 3000000
-        sourceRetentionValuePerYear: int = 6000000
-        socialSecurityPaymentInTheYear: int = 320000000
-        pensionContributionsInTheYear: int = 320000000
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = 80000000000
+        other_taxable_income_per_year: int = 1000000000
+        other_non_taxable_income_per_year: int = 3000000
+        source_retention_value_per_pear: int = 6000000
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 0
 
         #Validacion
-        self.assertRaises( TaxLogic.DigitsVeryLargeError, TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear) )
+        with  self.assertRaises(TaxLogic.DigitsVeryLargeError):
+            TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
     
     #Error por datos obligatorios no agregados
     def testError4(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 0
-        otherTaxableIncomePerYear: int = 0
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 0
-        socialSecurityPaymentInTheYear: int = 0
-        pensionContributionsInTheYear: int = 0
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = 0
+        other_taxable_income_per_year: int = 10000
+        other_non_taxable_income_per_year: int = 0
+        source_retention_value_per_pear: int = 0
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 0
 
         #Validacion
-        self.assertRaises( TaxLogic.DataNotAggregatedError, TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear) )
+        with self.assertRaises(TaxLogic.DataNotAggregatedError):
+            TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
     
     #Error por deduccibles negativos
     def testError5(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 15000000
-        otherTaxableIncomePerYear: int = 0
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 500000
-        socialSecurityPaymentInTheYear: int = 600000
-        pensionContributionsInTheYear: int = 600000
-        mortgageLoanPaymentPerYear: int = -15000000
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = 15000000
+        other_taxable_income_per_year: int = 1000000
+        other_non_taxable_income_per_year: int = 1000000
+        source_retention_value_per_pear: int = 500000
+        mortgage_loan_payment_per_year: int = -15000000
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 0
 
         #Validacion
-        self.assertRaises( TaxLogic.DeductiblesNegativeError, TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear) )
+        with self.assertRaises(TaxLogic.DeductiblesNegativeError):
+            TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
     
     #No ingresar los activos
     def testError6(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 0
-        otherTaxableIncomePerYear: int = 0
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 4000000
-        socialSecurityPaymentInTheYear: int = 0
-        pensionContributionsInTheYear: int = 0
-        mortgageLoanPaymentPerYear: int = 2000000
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = 0
+        other_taxable_income_per_year: int = 0
+        other_non_taxable_income_per_year: int = 0
+        source_retention_value_per_pear: int = 0
+        mortgage_loan_payment_per_year: int = 2000000
+        donation_value_per_year: int = 4000000
+        educationa_expenses_per_year: int = 3000000
 
         #Validacion
-        self.assertRaises( TaxLogic.AssetsNotEnteredException, TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear) )
+        with self.assertRaises(TaxLogic.AssetsNotEnteredException):
+            TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
     
     #Ingresar un valor negativo en los ingresos.
     def testError7(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = -15600000
-        otherTaxableIncomePerYear: int = -1000000
-        otherNonTaxableIncomePerYear: int = -300000
-        sourceRetentionValuePerYear: int = 0
-        socialSecurityPaymentInTheYear: int = -624000
-        pensionContributionsInTheYear: int = -624000
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = -15600000
+        other_taxable_income_per_year: int = -1000000
+        other_non_taxable_income_per_year: int = -300000
+        source_retention_value_per_pear: int = 1000000
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 0
 
         #Validacion
-        self.assertRaises( TaxLogic.NegativeValueEnteredException, TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear) )
+        with self.assertRaises(TaxLogic.NegativeValueEnteredException):
+            TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
     
     #Caso de error en caso de ingresar cifras no coherentes
     def testError8(self):
 
         #Datos de entrada
-        totalLaborIncomePerYear: int = 0.000525
-        otherTaxableIncomePerYear: int = 0
-        otherNonTaxableIncomePerYear: int = 0
-        sourceRetentionValuePerYear: int = 0
-        socialSecurityPaymentInTheYear: int = 0
-        pensionContributionsInTheYear: int = 0
-        mortgageLoanPaymentPerYear: int = 0
-        donationValuePerYear: int = 0
-        educationalExpensesPerYear: int = 0
+        total_labor_income_per_year: int = 0.000525
+        other_taxable_income_per_year: int = 250000
+        other_non_taxable_income_per_year: int = 50000
+        source_retention_value_per_pear: int = 0
+        mortgage_loan_payment_per_year: int = 0
+        donation_value_per_year: int = 0
+        educationa_expenses_per_year: int = 0
 
         #Validacion
-        self.assertRaises( TaxLogic.IncoherentFiguresExpection, TaxLogic.CalculateTax(totalLaborIncomePerYear, otherTaxableIncomePerYear, otherNonTaxableIncomePerYear, sourceRetentionValuePerYear, mortgageLoanPaymentPerYear, donationValuePerYear, educationalExpensesPerYear) )
+        with self.assertRaises(TaxLogic.IncoherentFiguresExpection):
+            TaxLogic.calculateTax(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_pear, mortgage_loan_payment_per_year, donation_value_per_year, educationa_expenses_per_year)
 
 
 
