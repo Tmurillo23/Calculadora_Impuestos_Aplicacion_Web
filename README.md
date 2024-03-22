@@ -3,8 +3,9 @@
 ## ¿Quién hizo esto? (Autores)
 
 -Valentina Carmona Guzmán. 
+
 -Luis Pablo Goez 
-(---)
+
 ## ¿Qué es y para qué es?
 
 Una calculadora de impuestos, tiene como propósito principal automatizar y simplificar el proceso de preparación y presentación de las declaraciones de impuestos. Esto puede ayudar a reducir errores y minimizar el tiempo necesario para completar las tareas relacionadas con los impuestos.
@@ -12,17 +13,33 @@ Una calculadora de impuestos, tiene como propósito principal automatizar y simp
 ## ¿Cómo lo hago funcionar?
 
 ### Prerequisitos
--Saber cuales son los datos (cantidades) para ingresarlos en el sistema 
+-Saber cuales son los datos (cantidades) para ingresarlos en el sistema.
 
 ### Ejecución 
-- como hacemos correr el programa en la consula 
+- Primeramente aparecera un menu, en el cual aparecen dos opciones, la primera es para entrar al programa e ingresar los datos, la segunda opcion de es para salir del menu. 
+
+Los datos a tener en cuenta para ingresar el programa son: 
+Total, de ingresos laborales en el año: suma del salario por todo el año. 
+Valor otros ingresos gravables: Son los ingresos que según las leyes colombianas tienen un % de impuestos, por ejemplo (Lotería, negocios, inversiones, alquileres, etc). 
+Valor otros ingresos no gravables: Son los que no tienen un % de impuesto, ejemplo (Subsidios, indemnizaciones, herencias, donaciones, etc.).
+Pago créditos hipoteca en el año: Es un deducible y entra todo lo que tiene que ver con la vivienda, seguros o hipotecas. 
+Valor donaciones en el año: Es un deducible. 
+Gastos en educación en el año: Es un deducible.  
+Total, de ingresos gravados: (Ingresos laborales + otros ingresos gravados + otros ingresos no gravables) – otros ingresos gravables. 
+Total, ingresos no gravables: Todos los ingresos no grabables del año. 
+Total, costos deducibles: pago seguridad social + aportes pensión en el año + pago créditos hipotecarios en el año + valor donaciones en al año + gastos educación en el año. 
+Valor a pagar por impuesto de renta: Es el total de ingresos gravables, pero hay unos porcentajes que dependiendo de la cantidad de total de ingresos gravables se define. 
+
+## ¿Cómo esta hecho?
+
+El proyecto, esta diseñado con clases, funciones, erroes y excepciones, tambien tenemos dos bibliotecas importadas, las cuales son, unittes para ejecutar las pruebas y sys para poder guiar la ruta completa y de manera segura en las carpetas del programa.
+
+En este proyecto tenemos dos carpetas principales, las cuales son src(en esta carpeta, esta una carpeta llamada Logic con un archivo llamado TaxLogic en el cual esta toda la logica del proyecta y tambien tenemos otra carpeta llamada console, en donde hay un archivo llamdado TaxConsole en el cual esta la interfaz de usuario) y por ultimo tenemos una carpeta llamada TaxTest, en donde hay un archivo, en el cuak estan todos los test d eel programa.
 
 
-
-
-
-
-
-# Calculadora_Impuestos
-
- App para calcular los impuestos de la declaracion de renta
+## Estructura sugerida
+    -Carpeta scr, en la cual se encuentran dos carpetas, en una esta la consola y en otra la logica del proyecto.
+    -Carpeta test, en esta carpeta estan las pruebas unitarias. 
+    
+## Uso 
+Para poder ejecutar las pruebas unitarias nos vamos ha la carpeta tet y entramos al archivo TaxTest, tambien podemos accder a la carpeta src, la la cual tenemos otras dos carpetas, en una se encuentra la cosola de en la otra la logica del proyecto.
