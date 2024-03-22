@@ -8,7 +8,7 @@ def showMenu():
     print("1. Ingresar datos")
     print("2. Salir")
 
-def option_1():
+def showOption_1():
     print("--------------------------------------------")
     print("            Formulario Impuestos            ")
     print("--------------------------------------------")
@@ -41,7 +41,7 @@ def main():
         seleccion = int(input("Por favor, selecciona una opción: "))
 
         if seleccion == 1:
-            option_1()
+            showOption_1()
         elif seleccion == 2:
             print("Usted ha salido del programa")
             break
