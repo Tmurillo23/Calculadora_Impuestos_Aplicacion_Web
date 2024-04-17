@@ -42,6 +42,11 @@ En este proyecto tenemos dos carpetas principales, las cuales son src(en esta ca
     -Carpeta test, en esta carpeta estan las pruebas unitarias. 
     
 ## Uso 
+Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo debe tener instalada la aplicación Git bash, el siguiente paso es copiar el link del repositorio, luego entra a el escritorio de su computadora, le da click y presiona la opción open git bash here, y en la consola de git bash escribe el siguiente comando "git clone" y pega el link del repositorio, recuerde que para pegar el link tiene que precionar clink derecho y luego presiona en pegar, despues le da entrer y el repositorio se comienza a descargar en el escritorio. 
+
+
+Para ejecutar por consola     
+
 Para poder ejecutar las pruebas unitarias nos vamos ha la carpeta tets y entramos al archivo TaxTest, tambien podemos acceder a la carpeta src, a la cual tenemos otras dos carpetas, en una se encuentra la cosola de en la otra la logica del proyecto, en la consola encontraremos el menú, en el cual ingresaremos la opcion que necesitemos, si queremos ingresar los datos, ingresamos el número 1 en la cosola, de lo contario ingresamos el número 2 y esta opcion inmediatamente te saca del menú; cuando ingresas a la opcion 1 te pedira los siguientes datos:
 -Total de ingresos laborales en el año
 -Total de otros ingresos gravables al año
