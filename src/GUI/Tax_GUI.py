@@ -5,6 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
 from kivy.graphics import Color, Rectangle
+from kivy.uix.image import Image
 
 import sys
 sys.path.append("src")
@@ -15,9 +16,18 @@ class TaxApp(App):
     def build(self):
 
         #Creacion del contenedor para la app
-        container = GridLayout(cols=2,padding=20)
+        container = GridLayout(cols=2, padding=20, spacing=10)
         container.bind(size=self._update_background, pos=self._update_background)
         self._update_background(container)
+
+
+        #Icono app
+        icono = Image(source='image/impuestos.png')
+        container.add_widget(icono)
+
+        #Titulo app
+        title = Label(text='CALCULADORA DE IMPUESTOS', font_size=35, color=(0, 0, 0, 1), bold=True)
+        container.add_widget(title)
         
 
         #Campo de texto para el total de ingresos laborales por año.
@@ -65,7 +75,7 @@ class TaxApp(App):
         #Campo de texto para el resultado y boton calcular.
         self.resultado = Label(color=(0, 0, 0, 1))
         container.add_widget(self.resultado)
-        self.calcular = Button(text="Calcular", color=(0, 0, 0, 1))
+        self.calcular = Button(text="Calcular")
         container.add_widget(self.calcular)
 
 
@@ -76,7 +86,7 @@ class TaxApp(App):
     def _update_background(self, instance, *args):
         instance.canvas.before.clear()
         with instance.canvas.before:
-            Color(1, 1, 1, 1)  # Establece el color a blanco
+            Color(1, 1, 1, 1)
             Rectangle(pos=instance.pos, size=instance.size)
     
     def mostrar_error(self, mensaje):
