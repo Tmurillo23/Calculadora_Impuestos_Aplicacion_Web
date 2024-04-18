@@ -4,35 +4,43 @@
 
 #Mayor retencion de ingresos 
 class HigherIncomeRetentionException( Exception ):
-    """La retencion en la fuente no puede ser mayor al valor total de ingresos."""
+    def __str__(self):
+        return "La retencion en la fuente no puede ser mayor al valor total de ingresos."
 
 #Ingreso invalido
 class InvalidEntryException( Exception ):
-    """Ingresaste un valor invalido."""
+    def __str__(self):
+        return "Ingresaste un valor invalido."
 
 #Digitos muy grandes 
 class DigitsVeryLargeError( Exception ):
-    """Numeros ingresados muy grandes, exceden el valor normal a calcular."""
+    def __str__(self):
+        return "Numeros ingresados muy grandes, exceden el valor normal a calcular."
 
 #Datos no agregados 
 class DataNotAggregatedError( Exception ):
-    """Error! Datos obligatorios no agregados. Ingreselos para poder continuar."""
+    def __str__(self):
+        return "Error! Datos obligatorios no agregados. Ingreselos para poder continuar."
     
 #Duducibles negativos  
 class DeductiblesNegativeError( Exception ):
-    """Error! Algo anda mal, el total de tus deducibles es menor que cero(0)."""
+    def __str__(self):
+        return "Error! Algo anda mal, el total de tus deducibles es menor que cero(0)."
 
 # Activos no ingresados
 class AssetsNotEnteredException( Exception ):
-    """Activos no agregados, ingrese activos para continuar."""
+    def __str__(self):
+        return "Activos no agregados, ingrese activos para continuar."
 
 # Valor negativo ingresos
 class NegativeValueEnteredException( Exception ):
-    """No puedes ingresar valor negativos en esta casilla."""
+    def __str__(self):
+        return "No puedes ingresar valor negativos en esta casilla."
 
 #Cifras incoherentes
 class IncoherentFiguresExpection( Exception ):
-    """Ingresaste un valor incoherente, verifique y cambie"""
+    def __str__(self):
+        return "Ingresaste un valor incoherente, verifique y cambie"
 
 
 #Clase con la informacion
@@ -47,7 +55,7 @@ class TaxInformation:
         self.educational_expenses_per_year = educational_expenses_per_year
 
 #Calcular el valor del impuesto a pagar
-def calculateTax(objeto):
+def calculateTax(objectTaxInfo):
     
     """
     total_labor_income_per_year: Total ingresos laborales al año
@@ -91,53 +99,96 @@ def calculateTax(objeto):
 
 
     #CONTROL DE ERROR
-    if type(objeto.total_labor_income_per_year) == str or type(objeto.other_taxable_income_per_year) == str or type(objeto.other_non_taxable_income_per_year) == str or type(objeto.source_retention_value_per_year) == str or type(objeto.mortgage_loan_payment_per_year) == str or type(objeto.donation_value_per_year) == str or type(objeto.educational_expenses_per_year) == str:
-        raise InvalidEntryException("Ingresaste un valor invalido.")
+
+    #Verificar ingreso de valores invalidos
+    def checkInvalidValue(objectTaxInfo):
+        if (type(objectTaxInfo.total_labor_income_per_year) == str or 
+            type(objectTaxInfo.other_taxable_income_per_year) == str or 
+            type(objectTaxInfo.other_non_taxable_income_per_year) == str or 
+            type(objectTaxInfo.source_retention_value_per_year) == str or 
+            type(objectTaxInfo.mortgage_loan_payment_per_year) == str or 
+            type(objectTaxInfo.donation_value_per_year) == str or 
+            type(objectTaxInfo.educational_expenses_per_year) == str):
+            raise InvalidEntryException()
     
-    if (objeto.total_labor_income_per_year < 0 or objeto.other_non_taxable_income_per_year < 0) and objeto.other_taxable_income_per_year < 0:
-        raise NegativeValueEnteredException("No puedes ingresar valor negativos en esta casilla.")
-
-    if objeto.source_retention_value_per_year > objeto.total_labor_income_per_year:
-        raise HigherIncomeRetentionException("La retencion en la fuente no puede ser mayor al valor total de ingresos.")
-
-    if len(str(objeto.total_labor_income_per_year)) > MAXDIGITS or len(str(objeto.other_taxable_income_per_year)) > MAXDIGITS or len(str(objeto.other_non_taxable_income_per_year)) > MAXDIGITS or len(str(objeto.source_retention_value_per_year)) > MAXDIGITS or len(str(objeto.mortgage_loan_payment_per_year)) > MAXDIGITS or len(str(objeto.donation_value_per_year)) > MAXDIGITS or len(str(objeto.educational_expenses_per_year)) > MAXDIGITS:
-        raise DigitsVeryLargeError("Numeros ingresados muy grandes, exceden el valor normal a calcular.")
+    #Verificar ingreso de valores negativos
+    def checkNegativeValues(objectTaxInfo):
+        if ((objectTaxInfo.total_labor_income_per_year < 0 or 
+            objectTaxInfo.other_non_taxable_income_per_year < 0) and 
+            objectTaxInfo.other_taxable_income_per_year < 0):
+            raise NegativeValueEnteredException()
     
-    if objeto.other_taxable_income_per_year == 0 and objeto.other_non_taxable_income_per_year == 0:
-        raise AssetsNotEnteredException("Activos no agregados, ingrese activos para continuar.")
+    #Verificar retencion en la fuenta mayor al valor total de ingresos
+    def verifyWithholdingAtSourceGreaterThanTotalIncome(objectTaxInfo):
+        if objectTaxInfo.source_retention_value_per_year > objectTaxInfo.total_labor_income_per_year:
+            raise HigherIncomeRetentionException()
 
-    if objeto.total_labor_income_per_year == 0:
-        raise DataNotAggregatedError("Error! Datos obligatorios no agregados. Ingreselos para poder continuar.")
+    #Verificar numeros ingresados muy grandes
+    def verifyVeryLargeIncome(objectTaxInfo, MAXDIGITS):
+        if (len(str(objectTaxInfo.total_labor_income_per_year)) > MAXDIGITS or 
+            len(str(objectTaxInfo.other_taxable_income_per_year)) > MAXDIGITS or 
+            len(str(objectTaxInfo.other_non_taxable_income_per_year)) > MAXDIGITS or 
+            len(str(objectTaxInfo.source_retention_value_per_year)) > MAXDIGITS or 
+            len(str(objectTaxInfo.mortgage_loan_payment_per_year)) > MAXDIGITS or 
+            len(str(objectTaxInfo.donation_value_per_year)) > MAXDIGITS or 
+            len(str(objectTaxInfo.educational_expenses_per_year)) > MAXDIGITS):
+            raise DigitsVeryLargeError()
+    
+    #Verificar activos no agregados
+    def checkNonAggregatedAssets(objectTaxInfo):
+        if (objectTaxInfo.other_taxable_income_per_year == 0 and 
+            objectTaxInfo.other_non_taxable_income_per_year == 0):
+            raise AssetsNotEnteredException()
 
-    if objeto.total_labor_income_per_year > 0 and objeto.total_labor_income_per_year < 1:
-        num_str = str(objeto.total_labor_income_per_year)
+    #Verificar datos obligatorios no agregados
+    def checkMandatoryNonAggregatedData(objectTaxInfo):
+        if objectTaxInfo.total_labor_income_per_year == 0:
+            raise DataNotAggregatedError()
 
-        if '.' in num_str:
-            decimal_part = num_str.split('.')[1]
-        
-        if len(decimal_part) == NUMBERLIMIT:
-            raise IncoherentFiguresExpection("Ingresaste un valor incoherente, verifique y cambie")
+    #Verificar valores incoherentes
+    def checkInconsistentValues(objectTaxInfo, NUMBERLIMIT):
+        if (objectTaxInfo.total_labor_income_per_year > 0 and 
+            objectTaxInfo.total_labor_income_per_year < 1):
+            num_str = str(objectTaxInfo.total_labor_income_per_year)
+            if '.' in num_str:
+                decimal_part = num_str.split('.')[1]
+                if len(decimal_part) == NUMBERLIMIT:
+                    raise IncoherentFiguresExpection()
+    
+    #Verificar deducibles menores que cero
+    def verifyDeductiblesLessThanZero(total_deductible_costs):
+        if total_deductible_costs < 0:
+            raise DeductiblesNegativeError()
+    
+
+    #VALIDACIONES
+    checkInvalidValue(objectTaxInfo)
+    checkNegativeValues(objectTaxInfo)
+    verifyWithholdingAtSourceGreaterThanTotalIncome(objectTaxInfo)
+    verifyVeryLargeIncome(objectTaxInfo, MAXDIGITS)
+    checkNonAggregatedAssets(objectTaxInfo)
+    checkMandatoryNonAggregatedData(objectTaxInfo)
+    checkInconsistentValues(objectTaxInfo, NUMBERLIMIT)
     
 
     #Calcular el valor a la seguridad social en el año y el aporte a la pension en el año
-    social_security_payment_in_the_year = ( objeto.total_labor_income_per_year * SOCIALSECURITYPERCENTAGE ) / 100
-    pension_contributions_in_the_year = ( objeto.total_labor_income_per_year * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
+    social_security_payment_in_the_year = ( objectTaxInfo.total_labor_income_per_year * SOCIALSECURITYPERCENTAGE ) / 100
+    pension_contributions_in_the_year = ( objectTaxInfo.total_labor_income_per_year * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
 
     #Calcular Total de Ingresos NO Gravables
-    pension_contributions_in_the_year = ( objeto.total_labor_income_per_year * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
-    total_untaxed_income = objeto.other_non_taxable_income_per_year
+    pension_contributions_in_the_year = ( objectTaxInfo.total_labor_income_per_year * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
+    total_untaxed_income = objectTaxInfo.other_non_taxable_income_per_year
 
     #Calcular el Total de Ingresos Gravados
-    total_taxed_income =  ( objeto.total_labor_income_per_year + objeto.other_taxable_income_per_year + objeto.other_non_taxable_income_per_year) - total_untaxed_income
+    total_taxed_income =  ( objectTaxInfo.total_labor_income_per_year + objectTaxInfo.other_taxable_income_per_year + objectTaxInfo.other_non_taxable_income_per_year) - total_untaxed_income
 
     #Calcular Total Costos Deducibles
-    total_deductible_costs = social_security_payment_in_the_year + pension_contributions_in_the_year + objeto.mortgage_loan_payment_per_year + objeto.donation_value_per_year + objeto.educational_expenses_per_year
+    total_deductible_costs = social_security_payment_in_the_year + pension_contributions_in_the_year + objectTaxInfo.mortgage_loan_payment_per_year + objectTaxInfo.donation_value_per_year + objectTaxInfo.educational_expenses_per_year
 
 
     #Validacion deducibles no sean menores que cero
-    if total_deductible_costs < 0:
-        raise DeductiblesNegativeError("Error! Algo anda mal, el total de tus deducibles es menor que cero(0).")
-
+    verifyDeductiblesLessThanZero(total_deductible_costs)
+    
 
     #Calcular las unidades de valor tributario
     tax_value_units = total_taxed_income / TAXUNITVALUE
@@ -153,13 +204,13 @@ def calculateTax(objeto):
     if tax_rate == 0:
         amount_to_pay_income_taxes = 0
     else:
-        amount_to_pay_income_taxes = (( total_taxed_income - total_deductible_costs ) * tax_rate ) - objeto.source_retention_value_per_year
+        amount_to_pay_income_taxes = (( total_taxed_income - total_deductible_costs ) * tax_rate ) - objectTaxInfo.source_retention_value_per_year
 
     #Lista de resultados
     results = []
     results.append(total_taxed_income)
     results.append(total_untaxed_income)
-    results.append(total_deductible_costs)
+    results.append(round(total_deductible_costs))
     results.append(round(amount_to_pay_income_taxes))
 
     return results

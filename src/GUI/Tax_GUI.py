@@ -98,7 +98,7 @@ class TaxApp(App):
     #Mostrar resultados
     def show_result_popup(self, result):
         popup_content = GridLayout(cols=1, padding=10)
-        popup_content.add_widget(Label(text="Resultado del cálculo:"))
+        popup_content.add_widget(Label(text="Resultado del cálculo:", bold=True))
         popup_content.add_widget(Label(text=f"Ingresos totales gravados: {str(result[0])}"))
         popup_content.add_widget(Label(text=f"Ingresos totales NO gravados: {str(result[1])}"))
         popup_content.add_widget(Label(text=f"Costos totales deducibles: {str(result[2])}"))
@@ -118,7 +118,7 @@ class TaxApp(App):
         close_button.bind(on_press=self.close_popup)
         popup_error.add_widget(close_button)
         
-        popup = Popup(title='Error', content=popup_error, size_hint=(None, None), size=(700, 200))
+        popup = Popup(title='Error', content=popup_error, size_hint=(None, None), size=(750, 200))
         popup.open()
 
 

@@ -49,11 +49,11 @@ def main():
 
         showMenu()
 
-        seleccion = int(input("Por favor, selecciona una opción: "))
+        selection = int(input("Por favor, selecciona una opción: "))
 
-        if seleccion == 1:
+        if selection == 1:
             showOption_1()
-        elif seleccion == 2:
+        elif selection == 2:
             print("Usted ha salido del programa")
             break
         else:
