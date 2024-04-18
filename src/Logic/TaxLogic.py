@@ -35,7 +35,7 @@ class IncoherentFiguresExpection( Exception ):
     """Ingresaste un valor incoherente, verifique y cambie"""
 
 
-#LOGICA
+#Clase con la informacion
 class TaxInformation:
     def __init__(self, total_labor_income_per_year: int, other_taxable_income_per_year: int, other_non_taxable_income_per_year: int, source_retention_value_per_year: int, mortgage_loan_payment_per_year: int, donation_value_per_year: int, educational_expenses_per_year: int ):    
         self.total_labor_income_per_year = total_labor_income_per_year
@@ -77,7 +77,7 @@ def calculateTax(objeto):
 
     # Definir los rangos y tasas impositivas como una lista de tuplas
     TAX_RATES = [
-        (0, 1090, 0),
+        (float('-inf'), 1090, 0),
         (1090, 1700, 0.19),
         (1700, 4100, 0.28),
         (4100, 8670, 0.33),
@@ -85,6 +85,9 @@ def calculateTax(objeto):
         (18970, 31000, 0.37),
         (31000, float('inf'), 0.39)
     ]
+
+    #Valor unidad tributaria
+    TAXUNITVALUE = 46076
 
 
     #CONTROL DE ERROR
@@ -137,7 +140,7 @@ def calculateTax(objeto):
 
 
     #Calcular las unidades de valor tributario
-    tax_value_units = total_taxed_income / 46076
+    tax_value_units = total_taxed_income / TAXUNITVALUE
 
     # Iterar sobre las tuplas de rangos y tasas impositivas para encontrar la tasa impositiva adecuada
     for lower_limit, upper_limit, rate in TAX_RATES:
@@ -145,22 +148,7 @@ def calculateTax(objeto):
             tax_rate = rate
             break
 
-    """Calculamos tasa impositiva
-    if tax_value_units <= 1090:
-        tax_rate = 0
-    elif tax_value_units > 1090 and tax_value_units <= 1700:
-        tax_rate = 0.19
-    elif tax_value_units > 1700 and tax_value_units <= 4100:
-        tax_rate = 0.28
-    elif tax_value_units > 4100 and tax_value_units <= 8670:
-        tax_rate = 0.33
-    elif tax_value_units > 8670 and tax_value_units <= 18970:
-        tax_rate = 0.35
-    elif tax_value_units > 18970 and tax_value_units <= 31000:
-        tax_rate = 0.37
-    elif tax_value_units > 31000:
-        tax_rate = 0.39
-    """
+    
     #Calcular el valor a pagar por impuestos de rentas
     if tax_rate == 0:
         amount_to_pay_income_taxes = 0

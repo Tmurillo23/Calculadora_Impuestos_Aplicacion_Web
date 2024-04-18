@@ -22,7 +22,14 @@ def showOption_1():
     educational_expenses_per_year = int(input("Ingrese el valor de gasto de educación al año: "))
     
 
-    TaxInformation =TaxLogic.TaxInformation(total_labor_income_per_year, other_taxable_income_per_year, other_non_taxable_income_per_year, source_retention_value_per_year, mortgage_loan_payment_per_year, donation_value_per_year, educational_expenses_per_year)
+    TaxInformation = TaxLogic.TaxInformation(
+        total_labor_income_per_year, 
+        other_taxable_income_per_year, 
+        other_non_taxable_income_per_year, 
+        source_retention_value_per_year, 
+        mortgage_loan_payment_per_year, 
+        donation_value_per_year, 
+        educational_expenses_per_year)
 
     tax = TaxLogic.calculateTax(TaxInformation)
 

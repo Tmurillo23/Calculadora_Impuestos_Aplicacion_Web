@@ -7,8 +7,11 @@ from kivy.uix.popup import Popup
 from kivy.graphics import Color, Rectangle
 from kivy.uix.image import Image
 
+
 import sys
 sys.path.append("src")
+
+from Logic import TaxLogic
 
 from Logic.TaxLogic import calculateTax
 
@@ -73,49 +76,94 @@ class TaxApp(App):
 
 
         #Campo de texto para el resultado y boton calcular.
-        self.resultado = Label(color=(0, 0, 0, 1))
-        container.add_widget(self.resultado)
-        self.calcular = Button(text="Calcular")
-        container.add_widget(self.calcular)
+        self.result = Label(color=(0, 0, 0, 1))
+        container.add_widget(self.result)
+        self.calculate = Button(text="Calcular", size_hint_x=None, width=200)
+        container.add_widget(self.calculate)
 
 
-        self.calcular.bind( on_press=self.calcular_cuota )
+        self.calculate.bind( on_press=self.calculate_fee )
 
         return container
     
+
+    #Color del fondo
     def _update_background(self, instance, *args):
         instance.canvas.before.clear()
         with instance.canvas.before:
             Color(1, 1, 1, 1)
             Rectangle(pos=instance.pos, size=instance.size)
     
-    def mostrar_error(self, mensaje):
-        ventana = GridLayout(cols=1)
-        ventana.add_widget(Label(text=mensaje))
+
+    #Mostrar resultados
+    def show_result_popup(self, result):
+        popup_content = GridLayout(cols=1, padding=10)
+        popup_content.add_widget(Label(text="Resultado del cálculo:"))
+        popup_content.add_widget(Label(text=f"Ingresos totales gravados: {str(result[0])}"))
+        popup_content.add_widget(Label(text=f"Ingresos totales NO gravados: {str(result[1])}"))
+        popup_content.add_widget(Label(text=f"Costos totales deducibles: {str(result[2])}"))
+        popup_content.add_widget(Label(text=f"Cantidad a pagar ingresos de renta: {str(result[3])}"))
         close_button = Button(text='Cerrar y volver a empezar')
-        close_button.bind(on_press=self.cerrar_popup)
-        ventana.add_widget(close_button)
-        
-        popup = Popup(title='Error', content=ventana, size=(400, 200))
+        close_button.bind(on_press=self.close_popup)
+        popup_content.add_widget(close_button)
+
+        popup = Popup(title="Resultado", content=popup_content, size_hint=(None, None), size=(550, 350))
         popup.open()
 
-    def cerrar_popup(self, instance):
+    #Mostrar error
+    def show_error(self, mensaje):
+        popup_error = GridLayout(cols=1)
+        popup_error.add_widget(Label(text=mensaje))
+        close_button = Button(text='Cerrar y volver a empezar')
+        close_button.bind(on_press=self.close_popup)
+        popup_error.add_widget(close_button)
+        
+        popup = Popup(title='Error', content=popup_error, size_hint=(None, None), size=(700, 200))
+        popup.open()
+
+
+    #Cerrar pestaña emergente
+    def close_popup(self, instance):
         instance.parent.parent.parent.parent.dismiss()
         self.total_labor_income_per_year.text = ''
         self.other_taxable_income_per_year.text = ''
-        self.interes.text = ''
-        self.resultado.text = ''
+        self.other_non_taxable_income_per_year.text = ''
+        self.source_retention_value_per_year.text = ''
+        self.mortgage_loan_payment_per_year.text = ''
+        self.donation_value_per_year.text = ''
+        self.educational_expenses_per_year.text = ''
+        self.result.text = ''
     
-    def calcular_cuota(self, sender):
+
+    #Calcular cuota
+    def calculate_fee(self, sender):
         try:
             total_labor_income_per_year = int( self.total_labor_income_per_year.text )
             other_taxable_income_per_year = int( self.other_taxable_income_per_year.text )
-            result = calculateTax( total_labor_income_per_year, other_taxable_income_per_year)
-            self.resultado.text = str( result )
+            other_non_taxable_income_per_year = int( self.other_non_taxable_income_per_year.text )
+            source_retention_value_per_year = int( self.source_retention_value_per_year.text )
+            mortgage_loan_payment_per_year = int( self.mortgage_loan_payment_per_year.text )
+            donation_value_per_year = int( self.donation_value_per_year.text )
+            educational_expenses_per_year = int( self.educational_expenses_per_year.text )
+
+            TaxInformation = TaxLogic.TaxInformation(
+                total_labor_income_per_year, 
+                other_taxable_income_per_year, 
+                other_non_taxable_income_per_year, 
+                source_retention_value_per_year, 
+                mortgage_loan_payment_per_year, 
+                donation_value_per_year, 
+                educational_expenses_per_year)
+            
+            result = calculateTax( TaxInformation )
+
+            self.show_result_popup(result)
+
         except ValueError:
-            self.resultado.text = "Por favor, ingrese valores numéricos válidos."
+            self.result.text = "Por favor, ingrese valores numéricos válidos."
+
         except Exception as e:
-            self.mostrar_error("Se produjo un error: {}".format(e)) 
+            self.show_error("Se produjo un error: {}".format(e)) 
     
 if __name__ == "__main__":
     TaxApp().run()
