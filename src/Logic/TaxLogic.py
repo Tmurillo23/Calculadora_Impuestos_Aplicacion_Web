@@ -176,7 +176,6 @@ def calculateTax(objectTaxInfo):
     pension_contributions_in_the_year = ( objectTaxInfo.total_labor_income_per_year * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
 
     #Calcular Total de Ingresos NO Gravables
-    pension_contributions_in_the_year = ( objectTaxInfo.total_labor_income_per_year * PENSIONCONTRIBUTIONPERCENTAGE ) / 100
     total_untaxed_income = objectTaxInfo.other_non_taxable_income_per_year
 
     #Calcular el Total de Ingresos Gravados
