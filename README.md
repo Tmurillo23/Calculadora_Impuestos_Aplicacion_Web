@@ -41,13 +41,25 @@ En este proyecto tenemos dos carpetas principales, las cuales son src(en esta ca
     -Carpeta scr, en la cual se encuentran dos carpetas, en una esta la consola y en otra la logica del proyecto.
     -Carpeta test, en esta carpeta estan las pruebas unitarias. 
     
-## Uso 
-Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo debe tener instalada la aplicación Git bash, el siguiente paso es copiar el link del repositorio, luego entra a el escritorio de su computadora, le da click y presiona la opción open git bash here, y en la consola de git bash escribe el siguiente comando "git clone" y pega el link del repositorio, recuerde que para pegar el link tiene que precionar clink derecho y luego presiona en pegar, despues le da entrer y el repositorio se comienza a descargar en el escritorio. 
+## ¿Cómo lo hago funcionar?
+Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo debe tener instalada la aplicación Git bash, el siguiente paso es copiar el link del repositorio, luego entra a el escritorio de su computadora, le da click derecho y presiona la opción open git bash here, y en la consola de git bash escribe el siguiente comando "git clone" y pega el link del repositorio, recuerde que para pegar el link tiene que precionar clink derecho y luego presiona en pegar, despues le da entrer y el repositorio se comenzara a descargar en el escritorio. 
 
 
-Para ejecutar por consola     
+## Para ejecutar por consola 
+1. Abra la terminal en su computadora
+2. En la terminal utilice el comando cd para entrar al escritorio; "cd Escritorio" (depende del nombre que tenga su escritorio o que ruta tiene para llegar a este.)
+3. Utilice el mismo comando para entrar a la aplicación "cd Calculadora_Impuestos". 
+4. Utilice el mismo comando para entrar a la carpeta src, que es donde estan organizadas las carpetas con los archivos necesarios para que la aplicación funcione "cd src". 
+5. luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando set PYTHONPATH= aqui va la ruta que copio, ejemplo
+set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
+6. utilice el  comando cd para entrar a la carpeta console que es donde se encuentra el menú "cd console".
+7. Despues utilice el comando "python TaxConsole.py"
+8. Aparecera un menú y usted digita la opción que necesita 
 
-Para poder ejecutar las pruebas unitarias nos vamos ha la carpeta tets y entramos al archivo TaxTest, tambien podemos acceder a la carpeta src, a la cual tenemos otras dos carpetas, en una se encuentra la cosola de en la otra la logica del proyecto, en la consola encontraremos el menú, en el cual ingresaremos la opcion que necesitemos, si queremos ingresar los datos, ingresamos el número 1 en la cosola, de lo contario ingresamos el número 2 y esta opcion inmediatamente te saca del menú; cuando ingresas a la opcion 1 te pedira los siguientes datos:
+    
+## Ejecutar pruebas e información de más
+Para poder ejecutar las pruebas unitarias, abrimos Visual o el programa que este utilizando, abrimos la calpeta Calcular_Impuestos y luego nos vamos ha la carpeta tets y entramos al archivo TaxTest y ejecutamos esta carpeta. 
+Tambien podemos acceder a la carpeta src, a la cual tenemos otras tres carpetas, en una se encuentra la cosola de en la otra la logica del proyecto, y en otra la interfaz grafica del proyacto; en la consola encontraremos el menú, en el cual ingresaremos la opcion que necesitemos, si queremos ingresar los datos, ingresamos el número 1 en la cosola, de lo contario ingresamos el número 2 y esta opcion inmediatamente te saca del menú; cuando ingresas a la opcion 1 te pedira los siguientes datos:
 -Total de ingresos laborales en el año
 -Total de otros ingresos gravables al año
 -Total de otros ingresos no gravables al año
@@ -55,6 +67,15 @@ Para poder ejecutar las pruebas unitarias nos vamos ha la carpeta tets y entramo
 -Total del valor de pago de credito hipotecario al año
 -Total del valor de donaciones del año
 -Total del valor de gasto de educación al año
+
+## Ejecuatar la interfaz grafica 
+1. abrir visual studio code 
+2. abrir la carpeta Calcular_Impuestos
+3. entrar a la carpeta src
+4. entrar a la carpeta GUI
+5. entrar al archivo Tax_GUI.PY
+6. ejecutar este archivo.
+ 
 
 ## Tener en cuenta lo siguiente para que no lance casos de error:
 -No ingresar los ingresos laborales totales en el año
