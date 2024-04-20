@@ -2,9 +2,8 @@
 
 ## ¿Quién hizo esto? (Autores)
 
--Valentina Carmona Guzmán. 
-
--Luis Pablo Goez 
+- Valentina Carmona Guzmán.
+- Luis Pablo Goez.
 
 ## ¿Qué es y para qué es?
 
@@ -13,75 +12,77 @@ Una calculadora de impuestos, tiene como propósito principal automatizar y simp
 ## ¿Cómo lo hago funcionar?
 
 ### Prerequisitos
--Saber cuales son los datos (cantidades) para ingresarlos en el sistema.
+- **Editor de codigo fuente:** Asegúrate de tener instalado un editor de codigo funete en tu sistema. Te recomendamos Visual Studio Code puedes descargarlo e instalarlo desde el sitio oficial de Visual Studio Code: [Descargar VS Code](https://code.visualstudio.com/Download).
+- **Python:** Debes tener Python instalado en tu sistema. Puedes descargar la última versión de Python desde el sitio oficial de Python: [Descargar Python](https://www.python.org/downloads/). Durante la instalación, asegúrate de marcar la casilla "Agregar Python al PATH".
 
-### Ejecución 
-- Primeramente aparecera un menu, en el cual aparecen dos opciones, la primera es para entrar al programa e ingresar los datos, la segunda opcion de es para salir del menu. 
+### Datos necesarios para la ejecucion 
+- **Total de ingresos laborales en el año:** Representa la suma acumulada de los salarios percibidos a lo largo de todo el año.
+- **Valor otros ingresos gravables:** Comprende aquellos ingresos que, de acuerdo con la legislación colombiana, están sujetos a un porcentaje de impuestos. Esto incluye fuentes como loterías, negocios, inversiones, alquileres, entre otros
+- **Valor otros ingresos no gravables:** Son aquellos que no están sujetos a un porcentaje de impuesto según la legislación. Ejemplos de estos ingresos incluyen subsidios, indemnizaciones, herencias, donaciones, entre otros.
+- **Valor retencion en la fuente al año:** Representa la cantidad total retenida en concepto de impuestos a lo largo del año.
+- **Pago créditos hipoteca en el año:** Es un deducible que abarca todos los gastos relacionados con la vivienda, incluyendo seguros y préstamos hipotecarios.
+- **Valor donaciones en el año:** Es una deducción que se refiere a las contribuciones que has realizado a lo largo del año en forma de donaciones.
+- **Gastos en educación en el año:** Representan una deducción relacionada con los costos asociados a la educación durante el período anual.
 
-Los datos a tener en cuenta para ingresar el programa son: 
-Total, de ingresos laborales en el año: suma del salario por todo el año. 
-Valor otros ingresos gravables: Son los ingresos que según las leyes colombianas tienen un % de impuestos, por ejemplo (Lotería, negocios, inversiones, alquileres, etc). 
-Valor otros ingresos no gravables: Son los que no tienen un % de impuesto, ejemplo (Subsidios, indemnizaciones, herencias, donaciones, etc.).
-Pago créditos hipoteca en el año: Es un deducible y entra todo lo que tiene que ver con la vivienda, seguros o hipotecas. 
-Valor donaciones en el año: Es un deducible. 
-Gastos en educación en el año: Es un deducible.  
-Total, de ingresos gravados: (Ingresos laborales + otros ingresos gravados + otros ingresos no gravables) – otros ingresos gravables. 
-Total, ingresos no gravables: Todos los ingresos no grabables del año. 
-Total, costos deducibles: pago seguridad social + aportes pensión en el año + pago créditos hipotecarios en el año + valor donaciones en al año + gastos educación en el año. 
-Valor a pagar por impuesto de renta: Es el total de ingresos gravables, pero hay unos porcentajes que dependiendo de la cantidad de total de ingresos gravables se define. 
+### Datos resultantes de la ejecucion
+- **Total de ingresos gravados:** (Ingresos laborales + otros ingresos gravados + otros ingresos no gravables) – otros ingresos gravables. 
+- **Total ingresos no gravables:** Todos los ingresos no gravables del año. 
+- **Total costos deducibles:** pago seguridad social + aportes pensión en el año + pago créditos hipotecarios en el año + valor donaciones en al año + gastos educación en el año. 
+- **Valor a pagar por impuesto de renta:** Se refiere a la cantidad total que debe abonarse como impuesto de renta. Este monto está determinado por porcentajes variables que se definen en función de la cantidad total de ingresos gravables percibidos.
 
 ## ¿Cómo esta hecho?
 
-El proyecto, esta diseñado con clases, funciones, erroes y excepciones, tambien tenemos dos bibliotecas importadas, las cuales son, unittes para ejecutar las pruebas y sys para poder guiar la ruta completa y de manera segura en las carpetas del programa.
+El proyecto, esta diseñado con clases, funciones, erroes y excepciones, tambien tenemos tres bibliotecas importadas, las cuales son, **unittes** para ejecutar las pruebas, **sys** para poder guiar la ruta completa y de manera segura en las carpetas del programa y **Kivy** para la creacion de la interfaz grafica.
 
-En este proyecto tenemos dos carpetas principales, las cuales son src(en esta carpeta, esta una carpeta llamada Logic con un archivo llamado TaxLogic en el cual esta toda la logica del proyecta y tambien tenemos otra carpeta llamada console, en donde hay un archivo llamdado TaxConsole en el cual esta la interfaz de usuario) y por ultimo tenemos una carpeta llamada TaxTest, en donde hay un archivo, en el cuak estan todos los test d eel programa.
-
+En este proyecto tenemos dos carpetas principales, las cuales son **src**(en esta carpeta, esta una carpeta llamada **Logic** con un archivo llamado TaxLogic en el cual esta toda la logica del proyecta, tambien tenemos una carpeta llamada **console**, en donde hay un archivo llamdado TaxConsole en el nos permite ejecutar el programa por medio de la consola/terminal y otra carpeta llamada **GUI**, en donde hay un archivo llamado Tax_GUI el cual nos permite correr la interfaz grafica) y por ultimo tenemos una carpeta llamada **test**, en donde hay un archivo llamado TaxTests, en el cual estan todos los test del programa.
 
 ## Estructura sugerida
     -Carpeta scr, en la cual se encuentran dos carpetas, en una esta la consola y en otra la logica del proyecto.
     -Carpeta test, en esta carpeta estan las pruebas unitarias. 
     
 ## ¿Cómo lo hago funcionar?
-Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo debe tener instalada la aplicación Git bash, el siguiente paso es copiar el link del repositorio, luego entra a el escritorio de su computadora, le da click derecho y presiona la opción open git bash here, y en la consola de git bash escribe el siguiente comando "git clone" y pega el link del repositorio, recuerde que para pegar el link tiene que precionar clink derecho y luego presiona en pegar, despues le da entrer y el repositorio se comenzara a descargar en el escritorio. 
+Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en cuenta los siguientes pasos:
+1. Instalada la aplicación Git. [Descargar Git](https://git-scm.com/download/win)
+2. Copiar el link del repositorio. 
+3. Entra a el escritorio de tu computadora, das click derecho y presiona la opción open git bash here.
+4. En la consola de git bash escribe el comando "git clone" y pega el link del repositorio, recuerde que para pegar el link debes presionar click derecho y luego presiona en pegar, despues le das entrer y el repositorio se comenzara a descargar en el escritorio. 
 
-
-## Para ejecutar por consola 
-1. Abra la terminal en su computadora
-2. En la terminal utilice el comando cd para entrar al escritorio; "cd Escritorio" (depende del nombre que tenga su escritorio o que ruta tiene para llegar a este.)
+### Ejecutar por consola 
+1. Abra la terminal en su computadora.
+2. En la terminal utilice el comando **cd** para entrar al escritorio; "cd Escritorio" (depende del nombre que tenga su escritorio o que ruta tiene para llegar a este).
 3. Utilice el mismo comando para entrar a la aplicación "cd Calculadora_Impuestos". 
 4. Utilice el mismo comando para entrar a la carpeta src, que es donde estan organizadas las carpetas con los archivos necesarios para que la aplicación funcione "cd src". 
-5. luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando set PYTHONPATH= aqui va la ruta que copio, ejemplo
-set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
-6. utilice el  comando cd para entrar a la carpeta console que es donde se encuentra el menú "cd console".
-7. Despues utilice el comando "python TaxConsole.py"
-8. Aparecera un menú y usted digita la opción que necesita 
-
+5. Luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando "set PYTHONPATH=ruta" aqui va la ruta que copio, ejemplo: set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
+6. Utilice el comando cd para entrar a la carpeta console que es donde se encuentra el menú "cd console".
+7. Despues utilice el comando "python TaxConsole.py".
+8. Aparecera un menú y usted sigue las instrucciones.
     
-## Ejecutar pruebas e información de más
-Para poder ejecutar las pruebas unitarias, abrimos Visual o el programa que este utilizando, abrimos la calpeta Calcular_Impuestos y luego nos vamos ha la carpeta tets y entramos al archivo TaxTest y ejecutamos esta carpeta. 
-Tambien podemos acceder a la carpeta src, a la cual tenemos otras tres carpetas, en una se encuentra la cosola de en la otra la logica del proyecto, y en otra la interfaz grafica del proyacto; en la consola encontraremos el menú, en el cual ingresaremos la opcion que necesitemos, si queremos ingresar los datos, ingresamos el número 1 en la cosola, de lo contario ingresamos el número 2 y esta opcion inmediatamente te saca del menú; cuando ingresas a la opcion 1 te pedira los siguientes datos:
--Total de ingresos laborales en el año
--Total de otros ingresos gravables al año
--Total de otros ingresos no gravables al año
--Total del valor de retención en la fuente al año
--Total del valor de pago de credito hipotecario al año
--Total del valor de donaciones del año
--Total del valor de gasto de educación al año
+### Ejecutar pruebas e información de más
+1. Abra la terminal en su computadora.
+2. En la terminal utilice el comando **cd** para entrar al escritorio; "cd Escritorio" (depende del nombre que tenga su escritorio o que ruta tiene para llegar a este).
+3. Utilice el mismo comando para entrar a la aplicación "cd Calculadora_Impuestos". 
+4. Utilice el mismo comando para entrar a la carpeta src, que es donde estan organizadas las carpetas con los archivos necesarios para que la aplicación funcione "cd src". 
+5. Luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando "set PYTHONPATH=ruta" aqui va la ruta que copio, ejemplo: set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
+6. Utilice el comando c.. para salir de la carpeta src "cd.."
+7. Utilice el comando cd para entrar a la carpeta test que es donde se encuentran laa pruebas "cd test".
+8. Despues utilice el comando "python TaxTests.py". 
 
-## Ejecuatar la interfaz grafica 
-1. abrir visual studio code 
-2. abrir la carpeta Calcular_Impuestos
-3. entrar a la carpeta src
-4. entrar a la carpeta GUI
-5. entrar al archivo Tax_GUI.PY
-6. ejecutar este archivo.
- 
+### Ejecuatar la interfaz grafica 
+1. Abra la terminal en su computadora.
+2. En la terminal utilice el comando **cd** para entrar al escritorio; "cd Escritorio" (depende del nombre que tenga su escritorio o que ruta tiene para llegar a este).
+3. Utilice el mismo comando para entrar a la aplicación "cd Calculadora_Impuestos". 
+4. Utilice el mismo comando para entrar a la carpeta src, que es donde estan organizadas las carpetas con los archivos necesarios para que la aplicación funcione "cd src". 
+5. Luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando "set PYTHONPATH=ruta" aqui va la ruta que copio, ejemplo: set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
+6. Utilice el comando cd para entrar a la carpeta GUI que es donde se encuentra la interfaz "cd GUI".
+7. Despues utilice el comando "python Tax_GUI.py". 
 
-## Tener en cuenta lo siguiente para que no lance casos de error:
--No ingresar los ingresos laborales totales en el año
--Ingresar valores en texto 
--Ingresar valores muy grandes > 10 digitos 
--No ingresar los datos obligatorios como por ejemplo 
--Ingresar los deducibles negativos 
--No ingresar los activos 
--Ingresar un valor negativo en los ingresos 
+## Tener en cuenta lo siguiente para que no lance errores:
+- No ingresar los ingresos laborales totales en el año
+- Ingresar valores en texto 
+- Ingresar valores muy grandes > 10 digitos 
+- No ingresar los datos obligatorios
+- Ingresar los deducibles negativos
+- No ingresar los activos 
+- Ingresar un valor negativo en los ingresos 
+
+C:\Users\Usuario\Desktop\Trabajos_U\Semestre_3\Codigo_Limpio\Calculadora_Impuestos\Calculadora_Impuestos\src
