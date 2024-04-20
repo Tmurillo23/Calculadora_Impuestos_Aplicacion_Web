@@ -37,7 +37,7 @@ El proyecto, esta diseñado con clases, funciones, erroes y excepciones, tambien
 En este proyecto tenemos dos carpetas principales, las cuales son **src**(en esta carpeta, esta una carpeta llamada **Logic** con un archivo llamado TaxLogic en el cual esta toda la logica del proyecta, tambien tenemos una carpeta llamada **console**, en donde hay un archivo llamdado TaxConsole en el nos permite ejecutar el programa por medio de la consola/terminal y otra carpeta llamada **GUI**, en donde hay un archivo llamado Tax_GUI el cual nos permite correr la interfaz grafica) y por ultimo tenemos una carpeta llamada **test**, en donde hay un archivo llamado TaxTests, en el cual estan todos los test del programa.
 
 ## Estructura sugerida
-    -Carpeta scr, en la cual se encuentran dos carpetas, en una esta la consola y en otra la logica del proyecto.
+    -Carpeta scr, en la cual se encuentran tres carpetas, en una esta la consola, en otra la logica del proyecto y en otra la interfaz grafica.
     -Carpeta test, en esta carpeta estan las pruebas unitarias. 
     
 ## ¿Cómo lo hago funcionar?
@@ -84,5 +84,3 @@ Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en
 - Ingresar los deducibles negativos
 - No ingresar los activos 
 - Ingresar un valor negativo en los ingresos 
-
-C:\Users\Usuario\Desktop\Trabajos_U\Semestre_3\Codigo_Limpio\Calculadora_Impuestos\Calculadora_Impuestos\src
