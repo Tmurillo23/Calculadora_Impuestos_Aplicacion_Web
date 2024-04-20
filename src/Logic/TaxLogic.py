@@ -20,22 +20,22 @@ class DigitsVeryLargeError( Exception ):
 #Datos no agregados 
 class DataNotAggregatedError( Exception ):
     def __str__(self):
-        return "Error! Datos obligatorios no agregados. Ingreselos para poder continuar."
+        return "El total de ingresos laborales al año no puede ser cero."
     
 #Duducibles negativos  
 class DeductiblesNegativeError( Exception ):
     def __str__(self):
-        return "Error! Algo anda mal, el total de tus deducibles es menor que cero(0)."
+        return "Algo anda mal, el total de tus deducibles es menor que cero(0)."
 
 # Activos no ingresados
 class AssetsNotEnteredException( Exception ):
     def __str__(self):
-        return "Activos no agregados, ingrese activos para continuar."
+        return "Ingresos gravables y no gravables en cero, para proseguir con el calculo\n                                          almenos uno debe tener un valor."
 
 # Valor negativo ingresos
 class NegativeValueEnteredException( Exception ):
     def __str__(self):
-        return "No puedes ingresar valor negativos en esta casilla."
+        return "No puedes ingresar valor negativos en el total de ingresos\n            laborales al año y en otros ingresos gravables al año ."
 
 #Cifras incoherentes
 class IncoherentFiguresExpection( Exception ):

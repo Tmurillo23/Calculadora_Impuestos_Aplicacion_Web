@@ -114,9 +114,12 @@ class TaxApp(App):
     def show_error(self, mensaje):
         popup_error = GridLayout(cols=1)
         popup_error.add_widget(Label(text=mensaje))
+
+        """
         close_button = Button(text='Cerrar y volver a empezar')
         close_button.bind(on_press=self.close_popup)
         popup_error.add_widget(close_button)
+        """
         
         popup = Popup(title='Error', content=popup_error, size_hint=(None, None), size=(750, 200))
         popup.open()
@@ -160,10 +163,10 @@ class TaxApp(App):
             self.show_result_popup(result)
 
         except ValueError:
-            self.result.text = "Por favor, ingrese valores numéricos válidos."
+            self.result.text = "Por favor, llene todos los campos con\n valores numéricos válidos(Enteros)."
 
         except Exception as e:
-            self.show_error("Se produjo un error: {}".format(e)) 
+            self.show_error("Error: {}".format(e)) 
     
 if __name__ == "__main__":
     TaxApp().run()
