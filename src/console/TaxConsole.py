@@ -4,7 +4,7 @@ sys.path.append("src")
 from Logic import TaxLogic
 
 def showMenu():
-    print("                         ")
+    print("  ")
     print("Bienvenido a la calculadora de impuestos, por favor seleccione una opción")
     print("1. Ingresar datos")
     print("2. Salir")
@@ -14,7 +14,7 @@ def showOption_1():
         print("--------------------------------------------")
         print("            Formulario Impuestos            ")
         print("--------------------------------------------")
-        print("NOTA: Evite dejar celdas vacias agregue 0.")
+        print("NOTA: Evite dejar celdas vacias agregue cero(0).")
         total_labor_income_per_year = int(input("Ingrese el total de ingresos laborales en el año: "))
         other_taxable_income_per_year = int(input("Ingrese el total de otros ingresos gravables al año: "))
         other_non_taxable_income_per_year = int(input("Ingrese el total de otros ingresos no gravables al año: "))
@@ -38,22 +38,22 @@ def showOption_1():
         print("--------------------------------------------")
         print("                   Resultado                ")
         print("--------------------------------------------")
-        print(f"El total de ingresos gravados fue: {tax[0]}.")
-        print(f"El total de ingresos no gravados fue: {tax[1]}.")
-        print(f"El total de costos deducibles fue: {tax[2]}.")
+        print(f"El total de ingresos gravados fue: {tax[0]}")
+        print(f"El total de ingresos no gravados fue: {tax[1]}")
+        print(f"El total de costos deducibles fue: {tax[2]}")
         print("--------------------------------------------")
-        print(f"El valor a pagar de inpuesto de renta es: {tax[3]}.")
+        print(f"El valor a pagar de inpuesto de renta es: {tax[3]}")
 
     except ValueError:
+        print("--------------------------------------------")
+        print("                     Error                  ")
         print("Error: Valores numérico inválidos (Enteros).")
-    except TypeError:
-        print("Error: Tipo de dato no válido. Se esperaba un entero.")
-    except ZeroDivisionError:
-        print("Error: División por cero.")
-    except KeyboardInterrupt:
-        print("Operación interrumpida por el usuario.")
+        print("--------------------------------------------")
+        print("  ")
+        showOption_1()
     except Exception as e:
-        print(f"Error desconocido: {e}")
+        print(f"Error: {e}")
+        showOption_1()
 
 
 def main():
@@ -67,7 +67,7 @@ def main():
         if selection == 1:
             showOption_1()
         elif selection == 2:
-            print("Usted ha salido del programa")
+            print("Usted ha salido del programa.")
             break
         else:
             print("Opción no válida. Por favor, selecciona una opción válida.")
