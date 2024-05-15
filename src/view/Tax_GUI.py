@@ -3,6 +3,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from kivy.graphics import Color, Rectangle
 from kivy.uix.image import Image
@@ -11,9 +12,13 @@ from kivy.uix.image import Image
 import sys
 sys.path.append("src")
 
-from Logic import TaxLogic
+from model import TaxLogic
 
-from Logic.TaxLogic import calculateTax
+from controller import ControllerRegistros
+
+from model.TaxLogic import calculateTax
+
+ControllerRegistros.CreateTable()
 
 class TaxApp(App):
     def build(self):
@@ -32,6 +37,12 @@ class TaxApp(App):
         title = Label(text='CALCULADORA DE IMPUESTOS', font_size=35, color=(0, 0, 0, 1), bold=True)
         container.add_widget(title)
         
+
+        #Campo de texto para la cedula.
+        container.add_widget(Label(text="Cedula", color=(0, 0, 0, 1)))
+        self.id = TextInput(font_size=30, foreground_color=(0, 0, 0, 1))
+        container.add_widget(self.id)
+
 
         #Campo de texto para el total de ingresos laborales por año.
         container.add_widget(Label(text="Total de ingresos laborales por año", color=(0, 0, 0, 1)))
@@ -75,14 +86,28 @@ class TaxApp(App):
         container.add_widget(self.educational_expenses_per_year)
 
 
-        #Campo de texto para el resultado y boton calcular.
+        #Campo de texto para el resultado.
         self.result = Label(color=(0, 0, 0, 1))
         container.add_widget(self.result)
-        self.calculate = Button(text="Calcular", size_hint_x=None, width=200)
-        container.add_widget(self.calculate)
+        
+        # Contenedor para los botones alineados horizontalmente
+        button_container = BoxLayout(orientation='horizontal', spacing=0, padding=0)
+        self.calculate_save = Button(text="Calcular y Guardar", size_hint_x=None, width=200)
+        self.delete = Button(text="Borrar", size_hint_x=None, width=200)
+        self.search_record = Button(text="Buscar Por Cedula", size_hint_x=None, width=200)
+        self.update_record = Button(text="Actualizar", size_hint_x=None, width=200)
 
+        button_container.add_widget(self.calculate_save)
+        button_container.add_widget(self.delete)
+        button_container.add_widget(self.search_record)
+        button_container.add_widget(self.update_record)
 
-        self.calculate.bind( on_press=self.calculate_fee )
+        container.add_widget(button_container)
+
+        self.calculate_save.bind( on_press=self.calculate_fee )
+        self.delete.bind( on_press=self.delete_record )
+        self.search_record.bind( on_press=self.search_record_by_id )
+        self.update_record.bind( on_press=self.update_record_current)
 
         return container
     
@@ -110,24 +135,33 @@ class TaxApp(App):
         popup = Popup(title="Resultado", content=popup_content, size_hint=(None, None), size=(550, 350))
         popup.open()
 
+
     #Mostrar error
     def show_error(self, mensaje):
         popup_error = GridLayout(cols=1)
         popup_error.add_widget(Label(text=mensaje))
-
-        """
-        close_button = Button(text='Cerrar y volver a empezar')
-        close_button.bind(on_press=self.close_popup)
-        popup_error.add_widget(close_button)
-        """
         
         popup = Popup(title='Error', content=popup_error, size_hint=(None, None), size=(750, 200))
+        popup.open()
+
+    
+    #Mostrar notificacion
+    def show_Notification(self, mensaje):
+        popup_error = GridLayout(cols=1)
+        popup_error.add_widget(Label(text=mensaje))
+
+        close_button = Button(text='Cerrar')
+        close_button.bind(on_press=self.close_popup)
+        popup_error.add_widget(close_button)
+        
+        popup = Popup(title='Notificacion', content=popup_error, size_hint=(None, None), size=(750, 200))
         popup.open()
 
 
     #Cerrar pestaña emergente
     def close_popup(self, instance):
         instance.parent.parent.parent.parent.dismiss()
+        self.id.text = ''
         self.total_labor_income_per_year.text = ''
         self.other_taxable_income_per_year.text = ''
         self.other_non_taxable_income_per_year.text = ''
@@ -138,9 +172,10 @@ class TaxApp(App):
         self.result.text = ''
     
 
-    #Calcular cuota
-    def calculate_fee(self, sender):
+    #Actualizar registro actual
+    def update_record_current(self, sender):
         try:
+            id = int( self.id.text )
             total_labor_income_per_year = int( self.total_labor_income_per_year.text )
             other_taxable_income_per_year = int( self.other_taxable_income_per_year.text )
             other_non_taxable_income_per_year = int( self.other_non_taxable_income_per_year.text )
@@ -150,6 +185,71 @@ class TaxApp(App):
             educational_expenses_per_year = int( self.educational_expenses_per_year.text )
 
             TaxInformation = TaxLogic.TaxInformation(
+                id,
+                total_labor_income_per_year, 
+                other_taxable_income_per_year, 
+                other_non_taxable_income_per_year, 
+                source_retention_value_per_year, 
+                mortgage_loan_payment_per_year, 
+                donation_value_per_year, 
+                educational_expenses_per_year)
+
+            ControllerRegistros.UpdateRecord( TaxInformation )
+
+            self.show_Notification("Registro actualizado con exito.")
+
+        except Exception as e:
+            self.show_error("Error: {}".format(e)) 
+
+
+    #Buscar registro por cedula
+    def search_record_by_id(self, sender):
+        try:
+            id = int( self.id.text )
+
+            result = ControllerRegistros.SearchRecordByID( id )
+
+            self.id.text = str(result.id)
+            self.total_labor_income_per_year.text = str(result.total_labor_income_per_year)
+            self.other_taxable_income_per_year.text = str(result.other_taxable_income_per_year)
+            self.other_non_taxable_income_per_year.text = str(result.other_non_taxable_income_per_year)
+            self.source_retention_value_per_year.text = str(result.source_retention_value_per_year)
+            self.mortgage_loan_payment_per_year.text = str(result.mortgage_loan_payment_per_year)
+            self.donation_value_per_year.text = str(result.donation_value_per_year)
+            self.educational_expenses_per_year.text = str(result.educational_expenses_per_year)
+            self.result.text = ''
+        
+        except Exception as e:
+            self.show_error("Error: {}".format(e)) 
+
+
+    #Borrar registro
+    def delete_record(self, sender):
+        try:
+            id = int( self.id.text )
+
+            ControllerRegistros.DeleteRecord( id )
+
+            self.show_Notification("Registro borrado con exito.")
+        
+        except Exception as e:
+            self.show_error("Error: {}".format(e)) 
+
+
+    #Calcular cuota
+    def calculate_fee(self, sender):
+        try:
+            id = int( self.id.text )
+            total_labor_income_per_year = int( self.total_labor_income_per_year.text )
+            other_taxable_income_per_year = int( self.other_taxable_income_per_year.text )
+            other_non_taxable_income_per_year = int( self.other_non_taxable_income_per_year.text )
+            source_retention_value_per_year = int( self.source_retention_value_per_year.text )
+            mortgage_loan_payment_per_year = int( self.mortgage_loan_payment_per_year.text )
+            donation_value_per_year = int( self.donation_value_per_year.text )
+            educational_expenses_per_year = int( self.educational_expenses_per_year.text )
+
+            TaxInformation = TaxLogic.TaxInformation(
+                id,
                 total_labor_income_per_year, 
                 other_taxable_income_per_year, 
                 other_non_taxable_income_per_year, 
@@ -158,6 +258,8 @@ class TaxApp(App):
                 donation_value_per_year, 
                 educational_expenses_per_year)
             
+            ControllerRegistros.InsertRecord( TaxInformation )
+
             result = calculateTax( TaxInformation )
 
             self.show_result_popup(result)

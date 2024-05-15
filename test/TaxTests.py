@@ -1,11 +1,11 @@
-# Todas las prueba sunitarias importan la biblioteca unittest
+# Todas las pruebas unitarias importan la biblioteca unittest
 import unittest
 
 # Las pruebas importan los modulos que hacen el trabajo
 import sys
 sys.path.append("src")
 
-from Logic import TaxLogic
+from model import TaxLogic
 
 class TaxesTest(unittest.TestCase):
 
@@ -16,6 +16,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 1,
             total_labor_income_per_year = 15600000, 
             other_taxable_income_per_year = 9600000, 
             other_non_taxable_income_per_year = 516000, 
@@ -45,6 +46,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 2,
             total_labor_income_per_year = 24000000, 
             other_taxable_income_per_year = 13000000, 
             other_non_taxable_income_per_year = 0, 
@@ -74,6 +76,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 3,
             total_labor_income_per_year = 60000000, 
             other_taxable_income_per_year = 30000000, 
             other_non_taxable_income_per_year = 1200000, 
@@ -103,6 +106,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 4,
             total_labor_income_per_year = 96000000, 
             other_taxable_income_per_year = 35500000, 
             other_non_taxable_income_per_year = 3000000, 
@@ -132,6 +136,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 5,
             total_labor_income_per_year = 120000000, 
             other_taxable_income_per_year = 0, 
             other_non_taxable_income_per_year = 5000000, 
@@ -161,6 +166,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 6,
             total_labor_income_per_year = 420000000, 
             other_taxable_income_per_year = 180000000, 
             other_non_taxable_income_per_year = 10000000, 
@@ -193,6 +199,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 7,
             total_labor_income_per_year = 15600000, 
             other_taxable_income_per_year = 0, 
             other_non_taxable_income_per_year = 20000000, 
@@ -223,6 +230,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 8,
             total_labor_income_per_year = 15600000, 
             other_taxable_income_per_year = 5000000000, 
             other_non_taxable_income_per_year = 0, 
@@ -253,6 +261,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 9,
             total_labor_income_per_year = 70000000, 
             other_taxable_income_per_year = -100000000, 
             other_non_taxable_income_per_year = 0, 
@@ -284,6 +293,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 10,
             total_labor_income_per_year = 30000000, 
             other_taxable_income_per_year = 15000000, 
             other_non_taxable_income_per_year = 5000000, 
@@ -315,6 +325,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 11,
             total_labor_income_per_year = 24000000, 
             other_taxable_income_per_year = 9600000, 
             other_non_taxable_income_per_year = 350000000, 
@@ -346,6 +357,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 12,
             total_labor_income_per_year = 17000000, 
             other_taxable_income_per_year = 5000000, 
             other_non_taxable_income_per_year = 0, 
@@ -380,6 +392,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 13,
             total_labor_income_per_year = 15000000, 
             other_taxable_income_per_year = 10000000, 
             other_non_taxable_income_per_year = 1000000, 
@@ -399,6 +412,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 14,
             total_labor_income_per_year = "Mil millones", 
             other_taxable_income_per_year = 0, 
             other_non_taxable_income_per_year = 0, 
@@ -418,6 +432,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 15,
             total_labor_income_per_year = 80000000000, 
             other_taxable_income_per_year = 1000000000, 
             other_non_taxable_income_per_year = 3000000, 
@@ -437,6 +452,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 16,
             total_labor_income_per_year = 0, 
             other_taxable_income_per_year = 10000, 
             other_non_taxable_income_per_year = 0, 
@@ -456,6 +472,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 17,
             total_labor_income_per_year = 15000000, 
             other_taxable_income_per_year = 1000000, 
             other_non_taxable_income_per_year = 1000000, 
@@ -475,6 +492,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 18,
             total_labor_income_per_year = 0, 
             other_taxable_income_per_year = 0, 
             other_non_taxable_income_per_year = 0, 
@@ -494,6 +512,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 19,
             total_labor_income_per_year = -15600000, 
             other_taxable_income_per_year = -1000000, 
             other_non_taxable_income_per_year = -300000, 
@@ -513,6 +532,7 @@ class TaxesTest(unittest.TestCase):
 
         #Datos de entrada
         TaxInformation = TaxLogic.TaxInformation(
+            id = 20,
             total_labor_income_per_year = 0.000525, 
             other_taxable_income_per_year = 250000, 
             other_non_taxable_income_per_year = 50000, 
@@ -525,7 +545,6 @@ class TaxesTest(unittest.TestCase):
         #Validacion
         with self.assertRaises(TaxLogic.IncoherentFiguresExpection):
             TaxLogic.calculateTax(TaxInformation)
-
 
 
 # Este fragmento de codigo permite ejecutar el formato individualmente

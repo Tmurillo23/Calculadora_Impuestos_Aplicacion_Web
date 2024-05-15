@@ -37,8 +37,10 @@ El proyecto, esta diseñado con clases, funciones, erroes y excepciones, tambien
 En este proyecto tenemos dos carpetas principales, las cuales son **src**(en esta carpeta, esta una carpeta llamada **Logic** con un archivo llamado TaxLogic en el cual esta toda la logica del proyecta, tambien tenemos una carpeta llamada **console**, en donde hay un archivo llamdado TaxConsole en el nos permite ejecutar el programa por medio de la consola/terminal y otra carpeta llamada **GUI**, en donde hay un archivo llamado Tax_GUI el cual nos permite correr la interfaz grafica) y por ultimo tenemos una carpeta llamada **test**, en donde hay un archivo llamado TaxTests, en el cual estan todos los test del programa.
 
 ## Estructura sugerida
-    -Carpeta scr, en la cual se encuentran tres carpetas, en una esta la consola, en otra la logica del proyecto y en otra la interfaz grafica.
-    -Carpeta test, en esta carpeta estan las pruebas unitarias. 
+    -Carpeta image, en la cual se encuentra el logo de la app.
+    -Carpeta scr, en la cual se encuentran tres carpetas, en Controller se encuentra el controlador con la base de datos y  el archivo para conectarse con esta, en Model la logica del proyecto y en View la interfaz grafica y la interfaz por consola.
+    -Carpeta test, en esta carpeta estan las pruebas unitarias.
+    -Carpeta testBD, en esta carpeta se encuentran las pruebas unitarias de la base de datos.
     
 ## ¿Cómo lo hago funcionar?
 Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en cuenta los siguientes pasos:
@@ -46,6 +48,19 @@ Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en
 2. Copiar el link del repositorio. 
 3. Entra a el escritorio de tu computadora, das click derecho y presiona la opción open git bash here.
 4. En la consola de git bash escribe el comando "git clone" y pega el link del repositorio, recuerde que para pegar el link debes presionar click derecho y luego presiona en pegar, despues le das entrer y el repositorio se comenzara a descargar en el escritorio. 
+
+### NOTA
+- En esta aplicacion la Base de datos funciona unicamente con la interfaz grafica
+
+### Configuracion Base de datos
+1. Debes ingresar a la pagina Neon. [Neon.Tech](https://neon.tech/)
+2. Te registrar/logea, una vez registrado debes crear un proyecto, el titulo del proyecto a tu preferencia y el nombre de la base de datos puede porle: "Calculadora_Impuestos" y le das es crear proyecto.
+3. Una vez  creado el proyecto y la base de datos te dirijes a la opcion **Dashboard**.
+4. Desplegas el menu donde dice **Connection string**, alli seleccionas la opcion de **Parameters only**.
+5. Copias todo lo que se encuentra en el campo de texto y te dirijes donde tienes el repositorio abierto.
+6. En la carpeta del proyecto encontraras una carpeta llamada **src**, dentro de esta hay un carpteta llamada **controller**, Alli encontraras un archivo llamado **SecretConfigSample.py**.
+7. En este archivo debes pegar los parametros que copias en el Neon de tu base de datos.
+8. Por Ultimo debes cambiar el nombre del archivo SecretConfigSample.py por **SecretConfig.py**.
 
 ### Ejecutar por consola 
 1. Abra la terminal en su computadora.
@@ -67,7 +82,7 @@ Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en
 7. Utilice el comando cd para entrar a la carpeta test que es donde se encuentran laa pruebas "cd test".
 8. Despues utilice el comando "python TaxTests.py". 
 
-### Ejecuatar la interfaz grafica 
+### Ejecuatar la interfaz grafica (Base de Datos)
 1. Abra la terminal en su computadora.
 2. En la terminal utilice el comando **cd** para entrar al escritorio; "cd Escritorio" (depende del nombre que tenga su escritorio o que ruta tiene para llegar a este).
 3. Utilice el mismo comando para entrar a la aplicación "cd Calculadora_Impuestos". 

@@ -1,7 +1,7 @@
 import sys
 sys.path.append("src")
 
-from Logic import TaxLogic
+from model import TaxLogic
 
 def showMenu():
     print("  ")
@@ -15,6 +15,7 @@ def showOption_1():
         print("            Formulario Impuestos            ")
         print("--------------------------------------------")
         print("NOTA: Evite dejar celdas vacias agregue cero(0).")
+        id = int(input("Ingrese el numero de cedula: "))
         total_labor_income_per_year = int(input("Ingrese el total de ingresos laborales en el año: "))
         other_taxable_income_per_year = int(input("Ingrese el total de otros ingresos gravables al año: "))
         other_non_taxable_income_per_year = int(input("Ingrese el total de otros ingresos no gravables al año: "))
@@ -25,6 +26,7 @@ def showOption_1():
         
 
         TaxInformation = TaxLogic.TaxInformation(
+            id,
             total_labor_income_per_year, 
             other_taxable_income_per_year, 
             other_non_taxable_income_per_year, 

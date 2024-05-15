@@ -45,7 +45,8 @@ class IncoherentFiguresExpection( Exception ):
 
 #Clase con la informacion
 class TaxInformation:
-    def __init__(self, total_labor_income_per_year: int, other_taxable_income_per_year: int, other_non_taxable_income_per_year: int, source_retention_value_per_year: int, mortgage_loan_payment_per_year: int, donation_value_per_year: int, educational_expenses_per_year: int ):    
+    def __init__(self, id: int, total_labor_income_per_year: int, other_taxable_income_per_year: int, other_non_taxable_income_per_year: int, source_retention_value_per_year: int, mortgage_loan_payment_per_year: int, donation_value_per_year: int, educational_expenses_per_year: int ):    
+        self.id = id
         self.total_labor_income_per_year = total_labor_income_per_year
         self.other_taxable_income_per_year = other_taxable_income_per_year
         self.other_non_taxable_income_per_year = other_non_taxable_income_per_year
@@ -58,6 +59,7 @@ class TaxInformation:
 def calculateTax(objectTaxInfo):
     
     """
+    id: Cedula
     total_labor_income_per_year: Total ingresos laborales al año
     other_taxable_income_per_year: Otros ingresos gravables al año
     other_non_taxable_income_per_year: Otros ingresos no gravables al año
