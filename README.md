@@ -82,7 +82,7 @@ Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en
 7. Utilice el comando cd para entrar a la carpeta que desee, **test** que es donde se encuentran las pruebas unitarias de la logica: "cd test" o **testBD** que es donde se encuentran las pruebas unitarias de la Base de datos.
 8. Despues utilice el comando "python TaxTests.py" si estas en **test** o utiliza el comando "python TestsBD.py" si estas en **testBD**. 
 
-### Ejecuatar la interfaz grafica (Base de Datos)
+### Ejecutar la interfaz grafica (Base de Datos)
 1. Abra la terminal en su computadora.
 2. En la terminal utilice el comando **cd** para entrar al escritorio; "cd Escritorio" (depende del nombre que tenga su escritorio o que ruta tiene para llegar a este).
 3. Utilice el mismo comando para entrar a la aplicación "cd Calculadora_Impuestos". 
