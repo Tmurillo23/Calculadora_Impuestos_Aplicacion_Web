@@ -78,9 +78,9 @@ Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en
 3. Utilice el mismo comando para entrar a la aplicación "cd Calculadora_Impuestos". 
 4. Utilice el mismo comando para entrar a la carpeta src, que es donde estan organizadas las carpetas con los archivos necesarios para que la aplicación funcione "cd src". 
 5. Luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando "set PYTHONPATH=ruta" aqui va la ruta que copio, ejemplo: set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
-6. Utilice el comando c.. para salir de la carpeta src "cd.."
-7. Utilice el comando cd para entrar a la carpeta test que es donde se encuentran laa pruebas "cd test".
-8. Despues utilice el comando "python TaxTests.py". 
+6. Utilice el comando cd.. para salir de la carpeta src "cd.."
+7. Utilice el comando cd para entrar a la carpeta que desee, **test** que es donde se encuentran las pruebas unitarias de la logica: "cd test" o **testBD** que es donde se encuentran las pruebas unitarias de la Base de datos.
+8. Despues utilice el comando "python TaxTests.py" si estas en **test** o utiliza el comando "python TestsBD.py" si estas en **testBD**. 
 
 ### Ejecuatar la interfaz grafica (Base de Datos)
 1. Abra la terminal en su computadora.

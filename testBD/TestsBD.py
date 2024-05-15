@@ -199,9 +199,6 @@ class TaxesTest(unittest.TestCase):
                                   educational_expenses_per_year=12)
         ControllerRegistros.InsertRecord( UserTest )
 
-        #Borrar registro
-        ControllerRegistros.DeleteRecord( 1 )
-
         #Creamos usuario actualizado
         UserUpdate = TaxInformation(id=2,
                                   total_labor_income_per_year=133,
