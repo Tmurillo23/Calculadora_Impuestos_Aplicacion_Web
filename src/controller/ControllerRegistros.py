@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append("src")
 
 from model.TaxLogic import TaxInformation
@@ -6,9 +7,11 @@ from model.TaxLogic import TaxInformation
 import psycopg2
 from controller import SecretConfig
 
-class ErrorNotFound( Exception ):
+
+class ErrorNotFound(Exception):
     """ Excepcion que indica que una fila buscada no fue encontrada"""
     pass
+
 
 def GetCursor():
     """Crea la conexion a la base de datos y retorna un cursor para ejecutar instrucciones."""
@@ -22,6 +25,7 @@ def GetCursor():
     connection = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
 
     return connection.cursor()
+
 
 def CreateTable():
     """Crea la tabla registros, en caso de que no exista."""
@@ -41,12 +45,13 @@ def CreateTable():
     cursor = GetCursor()
 
     try:
-        cursor.execute( Sql_CreateTable )
+        cursor.execute(Sql_CreateTable)
         cursor.connection.commit()
     except:
         cursor.connection.rollback()
 
-def InsertRecord( record: TaxInformation ):
+
+def InsertRecord(record: TaxInformation):
     """Guardar un registro en la base de datos"""
 
     Sql_InsertRecord = f"""INSERT INTO registros (
@@ -73,26 +78,28 @@ def InsertRecord( record: TaxInformation ):
 
     try:
         cursor = GetCursor()
-        cursor.execute( Sql_InsertRecord )
+        cursor.execute(Sql_InsertRecord)
         cursor.connection.commit()
     except:
-        cursor.connection.rollback() 
+        cursor.connection.rollback()
         raise Exception("No fue posible insertar el registro: " + str(record.id))
 
-def DeleteRecord( id: int ):
+
+def DeleteRecord(id: int):
     """Elimina la fila que contiene un registro en la BD"""
 
     Sql_DeleteRecord = f"""DELETE FROM registros WHERE id = {id}"""
 
     try:
         cursor = GetCursor()
-        cursor.execute( Sql_DeleteRecord )
+        cursor.execute(Sql_DeleteRecord)
         cursor.connection.commit()
     except:
-        cursor.connection.rollback() 
+        cursor.connection.rollback()
         raise Exception("No fue posible eliminar el registro: " + str(id))
 
-def SearchRecordByID( id: int ):    
+
+def SearchRecordByID(id: int):
     """Busca un registro por el numero de Cedula"""
 
     Sql_SearchRecordById = f"""SELECT 
@@ -111,25 +118,26 @@ def SearchRecordByID( id: int ):
 
     # Todas las instrucciones se ejecutan a tavés de un cursor
     cursor = GetCursor()
-    cursor.execute( Sql_SearchRecordById )
+    cursor.execute(Sql_SearchRecordById)
     fila = cursor.fetchone()
 
     if fila is None:
         raise ErrorNotFound("El registro buscado, no fue encontrado. Cedula=" + str(id))
 
-    result = TaxInformation(id=fila[0], 
-                               total_labor_income_per_year=fila[1], 
-                               other_taxable_income_per_year=fila[2], 
-                               other_non_taxable_income_per_year=fila[3], 
-                               source_retention_value_per_year=fila[4],
-                               mortgage_loan_payment_per_year=fila[5],
-                               donation_value_per_year=fila[6],
-                               educational_expenses_per_year=fila[7]
-                               )
-    
+    result = TaxInformation(id=fila[0],
+                            total_labor_income_per_year=fila[1],
+                            other_taxable_income_per_year=fila[2],
+                            other_non_taxable_income_per_year=fila[3],
+                            source_retention_value_per_year=fila[4],
+                            mortgage_loan_payment_per_year=fila[5],
+                            donation_value_per_year=fila[6],
+                            educational_expenses_per_year=fila[7]
+                            )
+
     return result
 
-def UpdateRecord( record: TaxInformation ):
+
+def UpdateRecord(record: TaxInformation):
     """Actualiza los valores de un registro en la base de datos; 
     El atributo cedula nunca se debe cambiar, porque es la clave primaria"""
 
@@ -148,17 +156,18 @@ def UpdateRecord( record: TaxInformation ):
 
     try:
         cursor = GetCursor()
-        cursor.execute( Sql_UpdateRecord )
+        cursor.execute(Sql_UpdateRecord)
         cursor.connection.commit()
     except:
-        cursor.connection.rollback() 
+        cursor.connection.rollback()
         raise Exception("No fue posible actualizar el registro: " + str(id))
 
+
 def DeleteTable():
-    """Borra (DROP) la tabla registros en su totalidad"""  
+    """Borra (DROP) la tabla registros en su totalidad"""
 
     Sql_DeleteTable = """DROP TABLE registros"""
 
     cursor = GetCursor()
-    cursor.execute( Sql_DeleteTable )
+    cursor.execute(Sql_DeleteTable)
     cursor.connection.commit()

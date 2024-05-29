@@ -20,7 +20,7 @@ def showOption_1():
         other_taxable_income_per_year = int(input("Ingrese el total de otros ingresos gravables al año: "))
         other_non_taxable_income_per_year = int(input("Ingrese el total de otros ingresos no gravables al año: "))
         source_retention_value_per_year = int(input("Ingrese el valor de retención en la fuente al año: "))
-        mortgage_loan_payment_per_year = int(input("Ingrese el valor de pago de credito hipotecario al año: "))
+        mortgage_loan_payment_per_year = int(input("Ingrese el valor de pago de crédito hipotecario al año: "))
         donation_value_per_year = int(input("Ingrese el valor de donaciones del año: "))
         educational_expenses_per_year = int(input("Ingrese el valor de gasto de educación al año: "))
         
