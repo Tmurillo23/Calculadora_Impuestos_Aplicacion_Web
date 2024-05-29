@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Impuestos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="message">{{message}}</h1>
+        <table>
+            <tr>
+                <td>Total de ingresos gravados</td>
+                <td>{{tax[0]}}</td>
+            </tr>
+            <tr>
+                <td>Total de ingresos no gravados</td>
+                <td>{{tax[1]}}</td>
+            </tr>
+            <tr>
+                <td>Total de costos deducibles</td>
+                <td>{{tax[2]}}</td>
+            </tr>
+            <tr>
+                <td>Valor a pagar de impuesto de renta</td>
+                <td>{{tax[3]}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

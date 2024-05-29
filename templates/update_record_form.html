@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Impuestos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calcular Impuestos</h1>
+        <form id="taxForm">
+            <h2>Entradas</h2>
+             <div class="form-group">
+                <label for="id">Numero de cedula:</label>
+                <input type="number" id="id" name="id" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="total_labor_income_per_year">Total ingresos laborales en el año:</label>
+                <input type="number" id="total_labor_income_per_year" name="total_labor_income_per_year" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="other_taxable_income_per_year">Ingrese el total de otros ingresos gravables al año:</label>
+                <input type="number" id="other_taxable_income_per_year" name="other_taxable_income_per_year" step="0.01" required>
+            </div>
+             <div class="form-group">
+                <label for="other_non_taxable_income_per_year">Ingrese el total de otros ingresos no gravables al año:</label>
+                <input type="number" id="other_non_taxable_income_per_year" name="other_non_taxable_income_per_year" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="source_retention_value_per_year">Valor retenciones en la fuente en el año:</label>
+                <input type="number" id="source_retention_value_per_year" name="source_retention_value_per_year" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mortgage_loan_payment_per_year">Pagos créditos hipotecarios en el año:</label>
+                <input type="number" id="mortgage_loan_payment_per_year" name="mortgage_loan_payment_per_year" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="donation_value_per_year">Valor donaciones en el año:</label>
+                <input type="number" id="donation_value_per_year" name="donation_value_per_year" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="educational_expenses_per_year">Gastos en educación en el año:</label>
+                <input type="number" id="educational_expenses_per_year" name="educational_expenses_per_year" step="0.01" required>
+            </div>
+            <div class="button-container">
+                <button type="submit" formaction="/update_record">Actualizar</button>
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>
