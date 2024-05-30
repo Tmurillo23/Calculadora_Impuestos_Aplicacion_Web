@@ -4,6 +4,8 @@
 
 - Tatiana Murillo.
 - Nehir Rodriguez.
+- Pablo Goez
+- Valentina Carmona
 
 ## ¿Qué es y para qué es?
 
