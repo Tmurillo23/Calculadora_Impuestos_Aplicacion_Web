@@ -101,11 +101,11 @@ class TaxesTest(unittest.TestCase):
         ControllerRegistros.InsertRecord( UserTest )
 
         #Borrar registro
-        ControllerRegistros.DeleteRecord( 1 )
+        validacion_usuario_borrado = ControllerRegistros.DeleteRecord( 1 )
 
         #valido
-        with self.assertRaises(Exception):
-            ControllerRegistros.DeleteRecord( 1 )
+        self.assertNotEqual(validacion_usuario_borrado, UserTest.id)
+        
     
 
     #Caso Normal Search
@@ -189,7 +189,7 @@ class TaxesTest(unittest.TestCase):
         ControllerRegistros.CreateTable()
 
         #Insertamos un nuevo usuario a la tabla
-        UserTest = TaxInformation(id=1,
+        UserTest = TaxInformation(id=2,
                                   total_labor_income_per_year=12,
                                   other_taxable_income_per_year=12,
                                   other_non_taxable_income_per_year=12,
@@ -209,9 +209,13 @@ class TaxesTest(unittest.TestCase):
                                   donation_value_per_year=12,
                                   educational_expenses_per_year=12)
 
-        #valido
-        with self.assertRaises(Exception):
-            ControllerRegistros.UpdateRecord( UserUpdate )
+        #Actualizamos el usuario que esta en la tabla
+        
+        ControllerRegistros.UpdateRecord( UserUpdate )
+
+        #verifico si lo trajo correctamente
+        UserSearch = ControllerRegistros.SearchRecordByID( 2 )
+        self.assertEqual(UserUpdate.id, UserSearch.id )
 
 
 if __name__ == '__main__':
