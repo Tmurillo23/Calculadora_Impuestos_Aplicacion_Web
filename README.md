@@ -79,6 +79,8 @@ Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en
 6. Utilice el comando cd para entrar a la carpeta console que es donde se encuentra el menú "cd console".
 7. Despues utilice el comando "python TaxConsole.py".
 8. Aparecera un menú y usted sigue las instrucciones.
+
+
 Navega al directorio del proyecto:
    ```
    cd Calculadora_Impuestos_Aplicacion_Web/
