@@ -7,6 +7,7 @@
 - Pablo Goez
 - Valentina Carmona
 
+
 ## ¿Qué es y para qué es?
 
 Una calculadora de impuestos, tiene como propósito principal automatizar y simplificar el proceso de preparación y presentación de las declaraciones de impuestos. Esto puede ayudar a reducir errores y minimizar el tiempo necesario para completar las tareas relacionadas con los impuestos.
@@ -40,9 +41,10 @@ En este proyecto tenemos dos carpetas principales, las cuales son **src**(en est
 
 ## Estructura sugerida
     -Carpeta image, en la cual se encuentra el logo de la app.
-    -Carpeta scr, en la cual se encuentran tres carpetas, en Controller se encuentra el controlador con la base de datos y  el archivo para conectarse con esta, en Model la logica del proyecto y en View la interfaz grafica y la interfaz por consola.
+    -Carpeta scr, en la cual se encuentran tres carpetas, en Controller se encuentra el controlador con la base de datos y  el archivo para conectarse con esta, en Model la logica del proyecto y en View la interfaz grafica, la página web y la interfaz por consola.
     -Carpeta test, en esta carpeta estan las pruebas unitarias.
     -Carpeta testBD, en esta carpeta se encuentran las pruebas unitarias de la base de datos.
+      - Carpeta templates, en esta carpeta se encuentran los archivos html para la página web
 ## Instalar los requerimientos
 ### paso 1: instalar psycopg2
 
@@ -81,25 +83,6 @@ Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en
 8. Aparecera un menú y usted sigue las instrucciones.
 
 
-Navega al directorio del proyecto:
-   ```
-   cd Calculadora_Impuestos_Aplicacion_Web/
-   ```
-
-Ejecutar el programa en consola :
-   ```
-   python app.py
-   ```
-
-### Ejecutar casos de prueba 
-1. Ejecutar casos de prueba:
-   ```
-   python test/TaxTests.py
-   ```
-2. Ejecutar pruebas de base de datos:
-   ```
-   python testBD/TestsBD.py  
-   
     
 ### Ejecutar pruebas e información de más
 1. Abra la terminal en su computadora.
@@ -108,8 +91,7 @@ Ejecutar el programa en consola :
 4. Utilice el mismo comando para entrar a la carpeta src, que es donde estan organizadas las carpetas con los archivos necesarios para que la aplicación funcione "cd src". 
 5. Luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando "set PYTHONPATH=ruta" aqui va la ruta que copio, ejemplo: set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
 6. Utilice el comando cd.. para salir de la carpeta src "cd.."
-7. Utilice el comando cd para entrar a la carpeta que desee, **test** que es donde se encuentran las pruebas unitarias de la logica: "cd test" o **testBD** que es donde se encuentran las pruebas unitarias de la Base de datos.
-8. Despues utilice el comando "python TaxTests.py" si estas en **test** o utiliza el comando "python TestsBD.py" si estas en **testBD**. 
+7Despues utilice el comando "python test/TaxTests.py" para correr las pruebas unitarias o utiliza el comando "python testBD/TestsBD.py " para correr las pruebas de la base de datos. 
 
 ### Ejecutar la interfaz grafica (Base de Datos)
 1. Abra la terminal en su computadora.
@@ -119,6 +101,15 @@ Ejecutar el programa en consola :
 5. Luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando "set PYTHONPATH=ruta" aqui va la ruta que copio, ejemplo: set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
 6. Utilice el comando cd para entrar a la carpeta GUI que es donde se encuentra la interfaz "cd GUI".
 7. Despues utilice el comando "python Tax_GUI.py". 
+
+### Ejecutar aplicación web
+1. Abra la terminal en su computadora.
+2. En la terminal utilice el comando **cd** para entrar al escritorio; "cd Escritorio" (depende del nombre que tenga su escritorio o que ruta tiene para llegar a este).
+3. Utilice el mismo comando para entrar a la aplicación "cd Calculadora_Impuestos". 
+4. Utilice el mismo comando para entrar a la carpeta src, que es donde estan organizadas las carpetas con los archivos necesarios para que la aplicación funcione "cd src".
+5. Luego copie la ruta que lleva hasta el momento en la terminal y luego escriba el comando "set PYTHONPATH=ruta" aqui va la ruta que copio, ejemplo: set PYTHONPATH=C:\ruta\Escritorio\Calculadora_Impuestos\src
+6. Utilice el comando cd.. para salir de la carpeta src "cd.."
+7. Despues utilice el comando "python -m  flask run --debug". 
 
 ## Tener en cuenta lo siguiente para que no lance errores:
 - No ingresar los ingresos laborales totales en el año

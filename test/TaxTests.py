@@ -9,7 +9,6 @@ from model import TaxLogic
 
 from controller import ControllerRegistros
 
-from model.TaxLogic import calculateTax
 ControllerRegistros.CreateTable()
 
 class TaxesTest(unittest.TestCase):
