@@ -43,6 +43,12 @@ En este proyecto tenemos dos carpetas principales, las cuales son **src**(en est
     -Carpeta scr, en la cual se encuentran tres carpetas, en Controller se encuentra el controlador con la base de datos y  el archivo para conectarse con esta, en Model la logica del proyecto y en View la interfaz grafica y la interfaz por consola.
     -Carpeta test, en esta carpeta estan las pruebas unitarias.
     -Carpeta testBD, en esta carpeta se encuentran las pruebas unitarias de la base de datos.
+## Instalar los requerimientos
+### paso 1: instalar psycopg2
+
+```
+pip install psycopg2
+```
     
 ## ¿Cómo lo hago funcionar?
 Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en cuenta los siguientes pasos:
@@ -73,6 +79,25 @@ Tener en cuenta: primeramente debe descargar el repositorio, para hacerlo ten en
 6. Utilice el comando cd para entrar a la carpeta console que es donde se encuentra el menú "cd console".
 7. Despues utilice el comando "python TaxConsole.py".
 8. Aparecera un menú y usted sigue las instrucciones.
+Navega al directorio del proyecto:
+   ```
+   cd Calculadora_Impuestos_Aplicacion_Web/
+   ```
+
+Ejecutar el programa en consola :
+   ```
+   python app.py
+   ```
+
+### Ejecutar casos de prueba 
+1. Ejecutar casos de prueba:
+   ```
+   python test/TaxTests.py
+   ```
+2. Ejecutar pruebas de base de datos:
+   ```
+   python testBD/TestsBD.py  
+   
     
 ### Ejecutar pruebas e información de más
 1. Abra la terminal en su computadora.
